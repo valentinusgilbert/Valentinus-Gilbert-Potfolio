@@ -66,6 +66,9 @@
 <style lang="scss" scoped>
 .banner {
     width: 1022px;
+    @media screen and (max-width: 768px) {
+       max-width: 380px;
+    }
     display: flex;
     justify-content: center;
     border-radius: 20px;
