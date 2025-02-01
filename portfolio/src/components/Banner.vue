@@ -79,7 +79,7 @@
         display: flex; 
         align-items: center;
         padding: 20px;
-        background: linear-gradient(115.19deg, #46A890 3.03%, #9ECFC3 43.08%, #F5F5F5 98%);
+        background: linear-gradient(115.19deg, #727070 3.03%, #abb0af 43.08%, #F5F5F5 98%);
         gap: 200px;
         border-radius: 8px;
         padding-bottom: 60px;
