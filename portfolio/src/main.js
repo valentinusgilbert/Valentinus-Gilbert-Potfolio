@@ -1,6 +1,16 @@
 import './assets/main.scss'
+import 'aos/dist/aos.css'
+import AOS from 'aos'
 
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+app.mount('#app')
+
+// Initialize AOS
+AOS.init({
+  duration: 800,
+  once: true,
+  offset: 100
+})

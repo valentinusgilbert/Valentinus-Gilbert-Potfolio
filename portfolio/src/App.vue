@@ -89,7 +89,7 @@
 
 .divider-1 {
   display: flex;
-  width: 840px;
+  width: 1052px;
   align-items: center;
   gap: 22px;
   padding: 0px;
@@ -148,7 +148,7 @@
   }
   &__line {
     margin-left: 10px;
-    width: 360px;
+    flex: 1;
     border-top: 4px solid #FF715B;
     @media (max-width: 768px) {
       display: none;
