@@ -83,6 +83,7 @@
         gap: 200px;
         border-radius: 8px;
         padding-bottom: 60px;
+        width: 100%;
         @media (max-width: 768px) {
             display: flex;
             flex-direction: column;

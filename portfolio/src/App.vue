@@ -63,7 +63,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px;
+  padding: 32px 0px;
   gap: 16px;
 }
 
