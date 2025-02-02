@@ -1,5 +1,8 @@
 <template>
   <header>
+    <!-- New navigation bar -->
+
+    <!-- Existing header title -->
     <div class="header-title">
         <div class="header-title__circles">
         <span></span>
@@ -11,17 +14,28 @@
           Resume
         </button>
     </div>
+    <nav class="header-navigation">
+        <ul>
+          <li><a href="#" @click.prevent="navigateTo('home')">Home</a></li>
+          <li><a href="#" @click.prevent="navigateTo('about')">About</a></li>
+          <li><a href="#" @click.prevent="navigateTo('project')">Project</a></li>
+          <li><a href="#" @click.prevent="navigateTo('contact')">Contact</a></li>
+        </ul>
+      </nav>
   </header>
 </template>
 
 <script src="./js/header.js"></script>
 <style lang="scss" scoped>
+
+
 .header-title {
-  background-color: #f8f9fa;
+  background-color: #324757;
   display: flex;
   position: relative;
   align-items: center;
-  padding: 6px 16px;
+  justify-content: space-between;
+  padding: 8px 16px;
   &__circles{
     left: 10px;
     display: flex;
@@ -44,23 +58,48 @@
   }
   &__button {
     position: relative;
-    background-color: #007bff;
+    background-color: #FF715B;
     color: white;
     border: none;
-    padding: 6px 12px;
+    padding: 8px 12px;
     border-radius: 4px;
+    font-weight: bolder;
     cursor: pointer;
   }
   &__button:hover {
-    background-color: #0056b3;
+    background-color: #d86554;
   }
   &__title {
-    flex-grow: 1;
     text-align: center;
     font-size: 16px;
     font-weight: bold;
-    color: gray;
+    color: white;
   }
 }
+
+.header-navigation {
+    display: flex;
+    justify-content: center;
+    background-color: #556775;
+    padding: 4px 16px;
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 60px;
+      margin: 0;
+      padding: 0;
+      li {
+        a {
+            font-size: 20px;
+            font-weight: bolder;
+            color: white;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+      }
+    }
+  }
 
 </style>
