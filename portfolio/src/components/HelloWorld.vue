@@ -1,6 +1,6 @@
 <template>
   <div class="hello-world">
-    <div class="hello-world__message">{{ currentMessage }}</div>
+    <span class="hello-world__message">{{ currentMessage }}</span>
   </div>
 </template>
 
@@ -14,6 +14,9 @@
   @media (max-width: 768px) {
     font-size: 20px;
     height: 24px;
+  }
+  &__message {
+    text-shadow: -3px 2px 2px rgba(0, 0, 0, 0.5);
   }
 }
 </style>
