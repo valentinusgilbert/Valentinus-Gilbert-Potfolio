@@ -9,7 +9,7 @@
         <span></span>
         <span></span>
         </div>
-        <div class="header-title__title">Portfolio - Valentinus Gilbert Sanjaya</div>
+        <div class="header-title__title">Personal Portfolio</div>
         <button class="header-title__button" @click="downloadResume">
           Resume
         </button>
@@ -41,9 +41,13 @@
     display: flex;
     gap: 10px;
     span {
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
+        @media (max-width: 768px) {
+            width: 8px;
+            height: 8px;
+        }
         
     } 
     :nth-child(1) {
@@ -65,6 +69,10 @@
     border-radius: 4px;
     font-weight: bolder;
     cursor: pointer;
+    @media (max-width: 768px) {
+        font-size: 10px;
+        padding: 6px 8px;
+    }
   }
   &__button:hover {
     background-color: #d86554;
@@ -74,6 +82,9 @@
     font-size: 16px;
     font-weight: bold;
     color: white;
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
   }
 }
 
@@ -88,14 +99,20 @@
       gap: 60px;
       margin: 0;
       padding: 0;
+      @media (max-width: 768px) {
+        gap: 28px;
+      }
       li {
         a {
-            font-size: 20px;
-            font-weight: bolder;
+            font-size: 16px;
             color: white;
             text-decoration: none;
             &:hover {
                 text-decoration: underline;
+            }
+            @media (max-width: 768px) {
+                font-size: 12px;
+                font-weight: bold;
             }
         }
       }

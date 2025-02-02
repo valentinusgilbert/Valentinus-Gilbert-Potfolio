@@ -8,13 +8,12 @@
 
 <style lang="scss" scoped>
 .hello-world {
-  text-align: center;
-  margin: 20px 0;
-  font-size: 24px;
-  height: 40px; // Set a fixed height to prevent movement
-
-  &__message {
-    color: red;
+  font-size: 40px;
+  font-weight: bolder;
+  height: 47px; // Set a fixed height to prevent movement
+  @media (max-width: 768px) {
+    font-size: 20px;
+    height: 24px;
   }
 }
 </style>
