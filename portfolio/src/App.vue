@@ -27,11 +27,14 @@
               </div>
               <div class="playing" v-else>
                 <span v-if="isEnded">End. Play again?</span>
+                <span v-else-if="isPaused">Pause...</span>
                 <span v-else>Play Music..</span>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div class="divider-1__line">
       </div>
     </div>
   </div>
@@ -65,11 +68,11 @@
   }
   &__rectangle {
     background-color: #556775;
-    width: 75%;
     border-radius: 8px;
     padding: 8px;
     border: 2px solid white;
     @media (max-width: 768px) {
+      width: 75%;
     }
     &-inner {
       &__play {
@@ -88,7 +91,8 @@
 
   }
   &__circle {
-    background-color: #c95a49;
+    background: linear-gradient(140.19deg, 
+    #da5541 42%, #b38e89 100%);
     width: 48px;
     height: 48px;
     border-radius: 100%;
@@ -112,10 +116,18 @@
       width: 38px !important;
     }
   }
+  &__line {
+    margin-left: 30px;
+    width: 340px;
+    border-top: 4px solid #FF715B;
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
 }
 
 .playing {
-  width: 160px;
+  width: 255px;
   display: flex;
   align-items: flex-end;
   height: 20px;
@@ -125,6 +137,9 @@
   border-radius: 4px;
   border: 1px solid white;
   align-items: center;
+  @media (max-width: 768px) {
+      width: 160px;
+  }
 }
 .soundwave {
   display: flex;
@@ -135,6 +150,7 @@
   color: #fff; /* Text color */
   border-radius: 4px;
   border: 1px solid white;
+  width: 255px;
   .soundwave-bar {
     width: 1px;
     background-color: #fff;

@@ -80,7 +80,7 @@
         display: flex; 
         align-items: center;
         padding: 20px;
-        background-color: rgb(70, 168, 144);
+        background: linear-gradient(115.19deg, #46A890 3.03%, #9ECFC3 43.08%, #F5F5F5 98%);
         gap: 200px;
         border-radius: 8px;
         padding-bottom: 60px;
@@ -134,13 +134,14 @@
             text-shadow: -3px 2px 2px rgba(0, 0, 0, 0.5);
         }
     }
+    /* Rectangle 4 */
     &-image {
             position: relative;
             background: #73828d;
             border-radius: 8px;
             padding: 24px 12px 12px 12px;
             padding-bottom: 10px;
-            box-shadow: 0 0px 8px rgba(0, 0, 0, 0.8); 
+            box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.8); 
             &-container {
                 img {
                     position: relative;
@@ -165,6 +166,7 @@
                 background-color:#FF715B;
                 width: 40px;
                 border-radius: 0px 0px 8px 8px;
+                box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.8); 
                 font-weight: 900;
             }
             &__social {
