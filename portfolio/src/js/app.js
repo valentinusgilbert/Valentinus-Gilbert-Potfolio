@@ -1,5 +1,6 @@
 import Header from '@/components/Header.vue';
 import Banner from '@/components/Banner.vue';
+import About from '@/components/About.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -12,6 +13,7 @@ export default {
     components: {
         Header,
         Banner,
+        About,
         FontAwesomeIcon
     },
     setup() {

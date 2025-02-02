@@ -65,7 +65,6 @@
 <style lang="scss" scoped>
 .banner {
     display: flex;
-    margin: 16px 0px;
     border-radius: 8px;
     padding: 8px;
     background-color: #324757;
@@ -84,7 +83,6 @@
         gap: 200px;
         border-radius: 8px;
         padding-bottom: 60px;
-        width: 100%;
         @media (max-width: 768px) {
             display: flex;
             flex-direction: column;
@@ -134,7 +132,6 @@
             text-shadow: -3px 2px 2px rgba(0, 0, 0, 0.5);
         }
     }
-    /* Rectangle 4 */
     &-image {
             position: relative;
             background: #73828d;
