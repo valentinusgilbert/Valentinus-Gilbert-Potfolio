@@ -74,7 +74,7 @@
     border: 2px solid white;
     @media (max-width: 768px) {
         padding: 6px;
-        width: 280px;
+        width: 320px;
     }
     &-container {
         display: flex; 
@@ -89,6 +89,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            padding-bottom: 70px;
         }
     }
     &-text {
@@ -106,6 +107,8 @@
             @media (max-width: 768px) {
                 width: 180px;
                 border: 2px solid #324757;
+                margin-top: 16px;
+                margin-bottom: 8px;
             }
         }
         &__container {
