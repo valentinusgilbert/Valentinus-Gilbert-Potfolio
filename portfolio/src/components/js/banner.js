@@ -18,6 +18,7 @@ export default {
         const duckSpeed = Math.random() * (0.3 - 0.1) + 0.1;
         const cowSpeed = Math.random() * (0.4 - 0.2) + 0.2;
         const bearSpeed = Math.random() * (0.4 - 0.2) + 0.2;
+        const pikaSpeed = Math.random() * (0.8 - 0.6) + 0.6;
 
         onMounted(() => {
             const cat = document.getElementById('cat');
@@ -26,12 +27,14 @@ export default {
             const duck = document.getElementById('duck');
             const cow = document.getElementById('cow');
             const bear = document.getElementById('bear');
+            const pika = document.getElementById('pika');
             moveCat(cat);
             moveDog(dog);
             movePig(pig);
             moveDuck(duck);
             moveCow(cow);
             moveBear(bear);
+            movePika(pika);
         });
         
         const moveCat = (cat) => {
@@ -117,6 +120,21 @@ export default {
                 duck.style.transform = `translateX(${position}px) scaleX(${direction})`;
                 const bannerWidth = document.querySelector('.banner-container').offsetWidth;
                 if (position >= bannerWidth - duck.width || position <= 0) {
+                    direction *= -1;
+                }
+                requestAnimationFrame(move);
+            };
+            move();
+        };
+
+        const movePika = (pika) => {
+            let direction = Math.random() < 0.5 ? 1 : -1;
+            let position = Math.random() * document.querySelector('.banner-container').offsetWidth;
+            const move = () => {
+                position += direction * pikaSpeed;
+                pika.style.transform = `translateX(${position}px) scaleX(${direction})`;
+                const bannerWidth = document.querySelector('.banner-container').offsetWidth;
+                if (position >= bannerWidth - pika.width || position <= 0) {
                     direction *= -1;
                 }
                 requestAnimationFrame(move);
