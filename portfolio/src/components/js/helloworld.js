@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue';
 export default {
   name: 'HelloWorld',
   setup() {
-    const messages = ['Hello', 'Hola', 'Bonjour', 'Hallo', 'Ciao', 'こんにちは', '안녕하세요', '你好'];
+    const messages = ['Halo...', 'Hello...', 'Hola...', 'Bonjour...', 'Ciao...'];
     const currentMessage = ref('');
     const currentMessageIndex = ref(0);
     const typingSpeed = 75; // milliseconds per character
