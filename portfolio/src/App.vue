@@ -1,6 +1,8 @@
 <template>
   <div class="portfolio">
-    <div>Hello World</div>
-
+    <Header />
+    <Banner />
   </div>
 </template>
+
+<script src="./js/app.js"></script>
