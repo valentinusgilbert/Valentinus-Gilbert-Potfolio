@@ -11,8 +11,16 @@ export default {
             link.click();
         }
 
+        const navigateTo = (section) => {
+            const element = document.getElementById(section);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
         return {
             downloadResume,
+            navigateTo,
         }
     }
 }
