@@ -19,6 +19,7 @@ export default {
         const currentTime = ref('0:00');
         const duration = ref('0:00');
         const isEnded = ref(false);
+        const isPaused = ref(false);
         const audio = new Audio(music);
         const soundwaveData = ref([]);
         const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -49,6 +50,7 @@ export default {
             if (isPlaying.value) {
                 audio.pause();
                 isPlaying.value = false;
+                isPaused.value = true;
             } else {
                 if (isEnded.value) {
                     audio.currentTime = 0;
@@ -56,6 +58,7 @@ export default {
                 }
                 audio.play();
                 isPlaying.value = true;
+                isPaused.value = false;
             }
         };
 
@@ -89,7 +92,8 @@ export default {
             duration,
             togglePlay,
             soundwaveData,
-            isEnded
+            isEnded,
+            isPaused
         }
     }
 }
