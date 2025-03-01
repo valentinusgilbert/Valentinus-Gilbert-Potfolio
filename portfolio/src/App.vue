@@ -10,7 +10,26 @@
       </div>
       <div class="divider-1__rectangle">
         <div class="divider-1__rectangle-inner">
-           <-- Play 
+          <div
+            class="divider-1__rectangle-inner__play"
+          >
+            <div class="divider-1__rectangle-inner__play-time">
+              <span>{{ currentTime }} / {{ duration }}</span>
+            </div>
+            <div>
+              <div class="soundwave" v-if="isPlaying">
+                <div
+                  v-for="(value, index) in soundwaveData"
+                  :key="index"
+                  :style="{ height: `${value / 14}px` }"
+                  class="soundwave-bar"
+                ></div>
+              </div>
+              <div class="playing" v-else>
+                <span>Play Music</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -51,6 +70,20 @@
     border: 2px solid white;
     @media (max-width: 768px) {
     }
+    &-inner {
+      &__play {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        &-time {
+          display: flex;
+          font-size: 12px;
+          width: 100%; /* Adjust width to fit content */
+          white-space: nowrap; /* Prevent line break */
+          justify-content: center; /* Center the text */
+        }
+      }
+    }
 
   }
   &__circle {
@@ -76,6 +109,42 @@
     @media (max-width: 768px) {
       height: 38px !important;
       width: 38px !important;
+    }
+  }
+}
+
+.playing {
+  width: 160px;
+  display: flex;
+  align-items: flex-end;
+  height: 20px;
+  background-color: #000;
+  padding: 0 2px;
+  justify-content: center; /* Center the text */
+  color: #fff; /* Text color */
+  border-radius: 4px;
+  border: 1px solid white;
+  align-items: center;
+}
+.soundwave {
+  display: flex;
+  align-items: flex-end;
+  height: 20px;
+  background-color: #000;
+  justify-content: center; /* Center the text */
+  color: #fff; /* Text color */
+  border-radius: 4px;
+  border: 1px solid white;
+  .soundwave-bar {
+    width: 1px;
+    background-color: #fff;
+    margin-right: 1px;
+    height: 0.8px;
+  }
+  @media (max-width: 768px) {
+    width: 160px;
+    .soundwave-bar {
+      margin-right: 1.1px; /* Increase margin */
     }
   }
 }

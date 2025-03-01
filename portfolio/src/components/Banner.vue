@@ -128,6 +128,10 @@
                 align-items: center;
                 font-size: 20px;
             }
+            text-shadow: -3px 2px 2px rgba(0, 0, 0, 0.5);
+        }
+        &__description {
+            text-shadow: -3px 2px 2px rgba(0, 0, 0, 0.5);
         }
     }
     &-image {
