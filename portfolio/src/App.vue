@@ -26,7 +26,8 @@
                 ></div>
               </div>
               <div class="playing" v-else>
-                <span>Play Music</span>
+                <span v-if="isEnded">End. Play again?</span>
+                <span v-else>Play Music..</span>
               </div>
             </div>
           </div>
@@ -119,7 +120,6 @@
   align-items: flex-end;
   height: 20px;
   background-color: #000;
-  padding: 0 2px;
   justify-content: center; /* Center the text */
   color: #fff; /* Text color */
   border-radius: 4px;
