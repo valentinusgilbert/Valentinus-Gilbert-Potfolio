@@ -17,7 +17,7 @@
             <div class="banner-image__close">
                 &#x2715; <!-- Add X icon -->
             </div>
-            <div class="banner-iamge-container">
+            <div class="banner-image-container">
                 <img src="../assets/self-photo.png" alt="Banner Image" />
             </div>
             <div class="banner-image__social">
@@ -49,9 +49,11 @@
     <div class="gif-bear">
         <img id="bear" src="../assets/bear.gif" alt="">
     </div>
- 
     <div class="gif-cow">
         <img id="cow" src="../assets/cow.gif" alt="">
+    </div>
+    <div class="gif-pika">
+        <img id="pika" src="../assets/pikachu.gif" alt="">
     </div>
  
  
@@ -62,6 +64,7 @@
 
 <style lang="scss" scoped>
 .banner {
+    display: flex;
     margin: 16px 0px;
     border-radius: 8px;
     padding: 8px;
@@ -70,17 +73,18 @@
     align-items: center;
     border: 2px solid white;
     @media (max-width: 768px) {
-        width: 85%;
         padding: 6px;
+        width: 280px;
     }
     &-container {
         display: flex; 
         align-items: center;
         padding: 20px;
-        background-color: #61a78c;
+        background-color: rgb(70, 168, 144);
         gap: 200px;
         border-radius: 8px;
         padding-bottom: 60px;
+        width: 100%;
         @media (max-width: 768px) {
             display: flex;
             flex-direction: column;
@@ -130,10 +134,19 @@
             padding: 24px 12px 12px 12px;
             padding-bottom: 10px;
             box-shadow: 0 0px 8px rgba(0, 0, 0, 0.8); 
-            img {
-                width: 160px;
-                background-color: #E9E9E9;
+            &-container {
+                img {
+                    position: relative;
+                    z-index: 1;
+                    width: 160px;
+                    margin-bottom: -2px;
+                }
+                background: url('../assets/background-profile.jpg') no-repeat center center;
+                background-size: cover;
+                border: 2px solid white;
+                border-radius: 4px;
             }
+ 
             &__close{
                 position: absolute;
                 display: flex;
@@ -224,6 +237,17 @@
         transition: transform 0.1s linear;
     }
 }
+
+.gif-pika {
+    position: absolute;
+    bottom: 4px;
+    z-index: 1;
+    img {
+        width: 60px;
+        transition: transform 0.1s linear;
+    }
+}
+
 
 
 </style>
