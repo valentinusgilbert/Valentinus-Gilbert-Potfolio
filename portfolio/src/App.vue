@@ -41,8 +41,10 @@
     </div>
     <div class="section-divider"/>
     <div class="about">
-    <About />
-  </div>
+      <About />
+    </div>
+    <div class="section-divider"/>
+
   </div>
 
   
