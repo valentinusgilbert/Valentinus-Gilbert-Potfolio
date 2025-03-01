@@ -28,6 +28,10 @@
 <script src="./js/header.js"></script>
 <style lang="scss" scoped>
 
+header {
+  box-shadow: 0px 3px 4px rgb(255, 255, 255);
+
+}
 
 .header-title {
   background-color: #324757;

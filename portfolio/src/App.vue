@@ -1,43 +1,51 @@
 <template>
   <div class="portfolio">
     <Header class="sticky-header" />
-    <div class="portofolio-content">
-      <Banner />
-    </div>
-    <div class="divider-1">
-      <div class="divider-1__circle" @click="togglePlay">
-        <font-awesome-icon :icon="isPlaying ? 'pause' : 'play'" />
+    <div class="head">
+      <div class="portofolio-content">
+        <Banner />
       </div>
-      <div class="divider-1__rectangle">
-        <div class="divider-1__rectangle-inner">
-          <div
-            class="divider-1__rectangle-inner__play"
-          >
-            <div class="divider-1__rectangle-inner__play-time">
-              <span>{{ currentTime }} / {{ duration }}</span>
-            </div>
-            <div>
-              <div class="soundwave" v-if="isPlaying">
-                <div
-                  v-for="(value, index) in soundwaveData"
-                  :key="index"
-                  :style="{ height: `${value / 14}px` }"
-                  class="soundwave-bar"
-                ></div>
+      <div class="divider-1">
+        <div class="divider-1__circle" @click="togglePlay">
+          <font-awesome-icon :icon="isPlaying ? 'pause' : 'play'" />
+        </div>
+        <div class="divider-1__rectangle">
+          <div class="divider-1__rectangle-inner">
+            <div
+              class="divider-1__rectangle-inner__play"
+            >
+              <div class="divider-1__rectangle-inner__play-time">
+                <span>{{ currentTime }} / {{ duration }}</span>
               </div>
-              <div class="playing" v-else>
-                <span v-if="isEnded">End. Play again?</span>
-                <span v-else-if="isPaused">Pause...</span>
-                <span v-else>Play Music..</span>
+              <div>
+                <div class="soundwave" v-if="isPlaying">
+                  <div
+                    v-for="(value, index) in soundwaveData"
+                    :key="index"
+                    :style="{ height: `${value / 14}px` }"
+                    class="soundwave-bar"
+                  ></div>
+                </div>
+                <div class="playing" v-else>
+                  <span v-if="isEnded">End. Play again?</span>
+                  <span v-else-if="isPaused">Pause...</span>
+                  <span v-else>Play Music..</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="divider-1__line">
+        <div class="divider-1__line">
+        </div>
       </div>
     </div>
+    <div class="section-divider"/>
+    <div class="about">
+    <About />
   </div>
+  </div>
+
+  
 </template>
 
 <script src="./js/app.js"></script>
@@ -51,10 +59,27 @@
   width: 100%;
 }
 
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+  gap: 16px;
+}
+
+.section-divider {
+  width: 100%;
+  height: 16px;
+  background-color: #324757;
+  border-top: 2px solid #a5b5c2;
+  border-bottom: 2px solid #a5b5c2;
+}
+
 .portfolio {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .divider-1 {
@@ -117,8 +142,8 @@
     }
   }
   &__line {
-    margin-left: 30px;
-    width: 340px;
+    margin-left: 10px;
+    width: 360px;
     border-top: 4px solid #FF715B;
     @media (max-width: 768px) {
       display: none;
