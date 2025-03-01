@@ -19,6 +19,8 @@
           <br>
           <br>
            Feel free to reach out—I'd love to connect and work together!
+           <br>
+           <br>
         </div>
       </div>
     </div>
@@ -64,7 +66,7 @@
 <style lang="scss" scoped>
   .about {
     display: flex;
-    padding: 32px;
+    padding: 32px 0px;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -77,13 +79,14 @@
       border: 2px solid white;
       border-radius: 8px;
       gap: 12px;
+      align-items: center;
       @media (max-width: 768px) {
         width: 336px;
       }
       img {
         border-radius: 8px;
-        height: 272px;
-        box-shadow: -3px 6px 8px rgba(0, 0, 0, 0.5);
+        height: 365px;
+        box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.5);
         @media (max-width: 768px) {
           display: none;
         }
@@ -93,25 +96,28 @@
         display: flex;
         flex-direction: column;
         border-radius: 8px;
-        box-shadow: -3px 6px 8px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.5);
         &-title {
           font-size: 32px;
           font-weight: bold;
           text-shadow: -3px 2px 2px rgba(0, 0, 0, 0.5);
-          background-color: #FF715B;
+          background: linear-gradient(179.29deg, #8e3224 35.16%, #c1412e 78.39%);
           padding: 2px 12px;
           border-radius: 8px 8px 0px 0px;
           @media (max-width: 768px) {
-            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 12px;
           }
         }
         &-description {
-          background: white;
-          padding: 12px;
+          background: repeating-linear-gradient(
+            white,
+            white 24px,
+            #ccc 25px
+          );
+          padding: 0px 12px;
+          line-height: 25px;
           border-radius: 0px 0px 8px 8px;
           font-size: 16px;
           color: black;
@@ -121,6 +127,7 @@
           @media (max-width: 768px) {
             align-items: center;
             text-align: center;
+            padding: 0px 24px;
           }
         }
       }
