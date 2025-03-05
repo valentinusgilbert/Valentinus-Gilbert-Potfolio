@@ -1,25 +1,10 @@
 <template>
-  <div class="about">
-    <div class="about__container">
-      <img src="../assets/work.gif" alt="Banner Image" />
-      <div class="about__container-text">
-        <div class="about__container-text-title">
-          About Me
-        </div>
-        <div class="about__container-text-description">
-          <br>
-          Hi, My name is Valentinus Gilbert Sanjaya
-          <br/>
-          <br>
-          I'm a software developer passionate about building applications.
-          I have experience in web development, along with frameworks like Vue.js and React.js.
-          <br>
-          <br>
-           Feel free to reach out—I'd love to connect and work together!
-           <br>
-           <br>
-        </div>
+  <div class="project">
+    <div class="project__container">
+      <div class="project__container-title">
+        Project
       </div>
+      .
     </div>
   </div>
 </template>
@@ -27,25 +12,35 @@
 <script src="./js/project.js"></script>
 
 <style lang="scss" scoped>
-  .about {
-    display: flex;
+  .project {
     padding: 32px 0px;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    gap: 32px;
     &__container {
       display: flex;
-      width: 825px;
-      background-color: rgb(218, 117, 99);
-      padding: 8px;
+      width: 780px;
+      padding: 32px;
+      background-color: rgb(212, 182, 115);
       border: 2px solid white;
       border-radius: 8px;
-      gap: 12px;
-      align-items: center;
+      flex-direction: column;
+      gap: 24px;
       @media (max-width: 768px) {
         width: 336px;
+        padding: 12px;
+        gap: 20px;
+      }
+      &-title {
+        font-size: 32px;
+        font-weight: bold;
+        text-shadow: -3px 2px 2px rgba(0, 0, 0, 0.5);
+        background-color: rgb(204, 149, 66);
+        padding: 4px 12px;
+        border-radius: 8px;
+        box-shadow: -2px 4px 8px rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
+    
   }
 </style>

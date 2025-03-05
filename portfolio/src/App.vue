@@ -47,6 +47,7 @@
     <div class="project">
       <Project />
     </div> -->
+    <Footer />
   </div>
 
   
