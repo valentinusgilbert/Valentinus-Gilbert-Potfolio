@@ -71,8 +71,9 @@
     position: relative;
     align-items: center;
     border: 2px solid white;
+    margin: 0px;
     @media (max-width: 768px) {
-        padding: 6px;
+        padding: 8px;
         width: 320px;
     }
     &-container {

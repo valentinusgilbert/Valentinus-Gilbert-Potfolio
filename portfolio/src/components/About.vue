@@ -117,7 +117,7 @@
     &__container {
       display: flex;
       width: 825px;
-      background-color: rgb(170, 163, 142);
+      background-color: rgb(218, 117, 99);
       padding: 8px;
       border: 2px solid white;
       border-radius: 8px;
@@ -144,7 +144,7 @@
           font-size: 32px;
           font-weight: bold;
           text-shadow: -3px 2px 2px rgba(0, 0, 0, 0.5);
-          background: linear-gradient(179.29deg, #8e3224 35.16%, #c1412e 78.39%);
+          background: linear-gradient(179.29deg, #a1483b 35.16%, #c1412e 78.39%);
           padding: 2px 12px;
           border-radius: 8px 8px 0px 0px;
           @media (max-width: 768px) {
@@ -313,6 +313,7 @@
             box-shadow: -2px 4px 8px rgba(0, 0, 0, 0.5);
             border-bottom: 8px solid #a587de;
             height: 140px;
+            
             @media (max-width: 768px) {
               height: 128px;
             }
