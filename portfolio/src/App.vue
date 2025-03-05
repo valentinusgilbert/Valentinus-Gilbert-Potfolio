@@ -43,8 +43,11 @@
     <div class="about">
       <About />
     </div>
-    <div class="section-divider"/>
-
+    <!-- <div class="section-divider"/>
+    <div class="project">
+      <Project />
+    </div> -->
+    <Footer />
   </div>
 
   
