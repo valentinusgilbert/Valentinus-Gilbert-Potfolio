@@ -33,5 +33,5 @@ If you'd like to run this project locally, follow these steps:
    ```sh
    npm run dev
    ```
-   Open [http://localhost:3000](http://localhost:9000) to see the website in development mode.
+   Open [http://localhost:9000](http://localhost:9000) to see the website in development mode.
 
