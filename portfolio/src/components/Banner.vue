@@ -1,5 +1,5 @@
 <template>
-  <div class="banner">
+  <div id="home" class="banner">
     <div class="banner-container">
         <div class="banner-text" data-aos="fade-right">
             <HelloWorld class="banner-text__halo"/>
@@ -37,7 +37,7 @@
             </div>
         </div>
     </div>
-    <!-- <div class="gif-cat">
+    <div class="gif-cat">
         <img id="cat" src="../assets/cat.gif" alt="">
     </div>
     <div class="gif-dog">
@@ -57,7 +57,7 @@
     </div>
     <div class="gif-pika">
         <img id="pika" src="../assets/pikachu.gif" alt="">
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -70,7 +70,7 @@
        max-width: 380px;
     }
     display: flex;
-    justify-content: center;
+
     border-radius: 20px;
     padding: 12px;
     background: linear-gradient(145deg, #2a3b4c, #1a2a3a);
