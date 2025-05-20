@@ -1,348 +1,367 @@
 <template>
   <div class="about">
-    <div class="about__container">
-      <img src="../assets/work.gif" alt="Banner Image" />
-      <div class="about__container-text">
-        <div class="about__container-text-title">
-          About Me
+    <div class="about__container" data-aos="fade-up">
+      <div class="about__container-content">
+        <div class="about__container-text">
+          <div class="about__container-text-title">
+            About Me
+          </div>
+          <div class="about__container-text-description">
+            <p class="greeting">Hi, I'm Valentinus Gilbert Sanjaya</p>
+            <p class="role">Software Developer</p>
+            <p class="description">
+              I'm a passionate software developer with expertise in web development, specializing in Vue.js and React.js. 
+              I love creating elegant solutions to complex problems and am always eager to learn new technologies.
+            </p>
+            <div class="skills">
+              <div class="skill-tag">Vue.js</div>
+              <div class="skill-tag">React.js</div>
+              <div class="skill-tag">JavaScript</div>
+              <div class="skill-tag">TypeScript</div>
+              <div class="skill-tag">HTML/CSS</div>
+            </div>
+          </div>
         </div>
-        <div class="about__container-text-description">
-          <br>
-          Hi, My name is Valentinus Gilbert Sanjaya
-          <br/>
-          <br>
-          I'm a software developer passionate about building applications.
-          I have experience in web development, along with frameworks like Vue.js and React.js.
-          <br>
-          <br>
-           Feel free to reach out—I'd love to connect and work together!
-           <br>
-           <br>
+        <div class="about__container-image">
+          <img src="../assets/work.gif" alt="Work Illustration" />
+        </div>
+      </div>
+      <div class="about__container-education">
+        <div class="education-card">
+          <div class="education-card-content">
+            <div class="education-period">2021 - 2025</div>
+            <div class="education-degree">Bachelor of Computer Science</div>
+            <div class="education-school">Universitas Bina Nusantara</div>
+            <div class="education-details">
+              • Major in Software Engineering<br>
+              • GPA: 3.85/4.00<br>
+              • Active in Programming Club
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="about__experience">
+
+    <div class="about__experience" data-aos="fade-up" data-aos-delay="100">
       <div class="about__experience-title">
         Work Experience
       </div>
-      <div class="about__experience-description">
-        <div class="about__experience-description-item">
-          <div class="about__experience-description-item-container">
-            <div class="about__experience-description-item-period">
-              Feb 2024 - Feb 2025
-            </div>
-            <div class="about__experience-description-item-title">
+      <div class="experience-cards">
+        <div class="experience-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="experience-card-content">
+            <div class="experience-period">Feb 2024 - Feb 2025</div>
+            <div class="experience-title">Software Engineer - Front End Developer</div>
+            <div class="experience-company">
+              <span class="company-icon">🏢</span>
               PT. Global Digital Niaga (Blibli)
             </div>
-            <div class="about__experience-description-item-description">
-              Software Engineer - Front End Developer
+            <div class="experience-description">
+              <ul>
+                <li>Developing and maintaining frontend applications using Vue.js and React.js</li>
+                <li>Collaborating with cross-functional teams to deliver high-quality products</li>
+                <li>Implementing responsive designs and ensuring cross-browser compatibility</li>
+              </ul>
             </div>
           </div>
         </div>
-        <div class="about__experience-description-item">
-          <div class="about__experience-description-item-container">
-            <div class="about__experience-description-item-period">
-              Sept 2023 - Present
-            </div>
-            <div class="about__experience-description-item-title">
+
+        <div class="experience-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="experience-card-content">
+            <div class="experience-period">Sept 2023 - Present</div>
+            <div class="experience-title">Freelance Web Developer</div>
+            <div class="experience-company">
+              <span class="company-icon">💼</span>
               Ditto Dev
             </div>
-            <div class="about__experience-description-item-description">
-              Freelance Web Developer
-            </div>
-          </div>
-        </div>
-        <div class="about__experience-description-item">
-          <div class="about__experience-description-item-container">
-            <div class="about__experience-description-item-period">
-              Sept 2023 - Jan 2024
-            </div>
-            <div class="about__experience-description-item-title">
-              Courses Mentor
-            </div>
-            <div class="about__experience-description-item-description">
-              Bina Nusantara University
+            <div class="experience-description">
+              <ul>
+                <li>Building custom web applications for clients</li>
+                <li>Implementing modern UI/UX designs</li>
+                <li>Optimizing website performance and SEO</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="about__education">
-      <div class="about__education-title">
-        Education
-      </div>
-      <div class="about__education-description">
-        <div class="about__education-description-item">
-          <div class="about__education-description-item-container">
-            <div class="about__education-description-item-period">
-              2021 - 2025
-            </div>
-            <div class="about__education-description-item-title">
-              Bachelor of Computer Science
-            </div>
-            <div class="about__education-description-item-description">
-              Universitas Bina Nusantara
-            </div>
-          </div>
-        </div>
-        <div class="about__education-description-item">
-          <div class="about__education-description-item-container">
-            <div class="about__education-description-item-period">
-              2018 - 2021
-            </div>
-            <div class="about__education-description-item-title">
-              Senior Highshool
-            </div>
-            <div class="about__education-description-item-description">
-              SMA Xaverius 1 Bandar Lampung
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-   
   </div>
 </template>
 
 <script src="./js/about.js"></script>
 
 <style lang="scss" scoped>
-  .about {
-    display: flex;
-    padding: 32px 0px;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    gap: 32px;
-    &__container {
+.about {
+  display: flex;
+  padding: 32px 0px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &__container {
+    width: 90%;
+    max-width: 1000px;
+    background: linear-gradient(145deg, #2a3b4c, #1a2a3a);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+    &-content {
       display: flex;
-      width: 825px;
-      background-color: rgb(218, 117, 99);
-      padding: 8px;
-      border: 2px solid white;
-      border-radius: 8px;
-      gap: 12px;
+      gap: 40px;
       align-items: center;
+      margin-bottom: 40px;
+
       @media (max-width: 768px) {
-        width: 336px;
-      }
-      img {
-        border-radius: 8px;
-        height: 295px;
-        box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.5);
-        @media (max-width: 768px) {
-          display: none;
-        }
-      }
-      &-text {
-        height: 100%;
-        display: flex;
         flex-direction: column;
-        border-radius: 8px;
-        box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.5);
-        &-title {
-          font-size: 32px;
+        gap: 24px;
+      }
+    }
+
+    &-text {
+      flex: 1;
+      color: white;
+
+      &-title {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 24px;
+        background: linear-gradient(45deg, #FF715B, #FF9F8C);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      &-description {
+        .greeting {
+          font-size: 24px;
           font-weight: bold;
-          text-shadow: -3px 2px 2px rgba(0, 0, 0, 0.5);
-          background: linear-gradient(179.29deg, #a1483b 35.16%, #c1412e 78.39%);
-          padding: 2px 12px;
-          border-radius: 8px 8px 0px 0px;
-          @media (max-width: 768px) {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
+          margin-bottom: 8px;
         }
-        &-description {
-          background: repeating-linear-gradient(
-            white,
-            white 24px,
-            #ccc 25px
-          );
-          padding: 0px 12px;
-          line-height: 25px;
-          border-radius: 0px 0px 8px 8px;
+
+        .role {
+          font-size: 20px;
+          color: #FF715B;
+          margin-bottom: 16px;
+        }
+
+        .description {
           font-size: 16px;
-          color: black;
-          font-weight: lighter;
-          text-align: justify;
-          text-shadow: -4px 2px 2px rgba(0, 0, 0, 0.1);
-          @media (max-width: 768px) {
-            align-items: center;
-            text-align: center;
-            padding: 0px 24px;
+          line-height: 1.6;
+          margin-bottom: 24px;
+          color: #e0e0e0;
+        }
+
+        .skills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+
+          .skill-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #FF715B;
+            border: 1px solid rgba(255, 113, 91, 0.3);
+            transition: all 0.3s ease;
+
+            &:hover {
+              background: rgba(255, 113, 91, 0.2);
+              transform: translateY(-2px);
+            }
           }
         }
       }
     }
-    &__education {
-      display: flex;
-      width: 778px;
-      background-color: rgb(129, 142, 134);
-      padding: 32px;
-      border: 2px solid white;
-      border-radius: 8px;
-      flex-direction: column;
-      gap: 24px;
-      @media (max-width: 768px) {
-        width: 336px;
-        padding: 12px;
-        gap: 20px;
-      }
-      &-title {
-        font-size: 32px;
-        font-weight: bold;
-        text-shadow: -3px 2px 2px rgba(0, 0, 0, 0.5);
-        background-color: rgb(174, 174, 108);
-        padding: 4px 12px;
-        border-radius: 8px;
-        box-shadow: -2px 4px 8px rgba(0, 0, 0, 0.5);
-        display: flex;
-        @media (max-width: 768px) {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-      }
 
-   
-      &-description {
-        display: flex;
-        gap: 36px;
-        @media (max-width: 768px) {
-          align-items: center;
-          display: flex;
-          flex-direction: column;
-          gap: 20px
-        }
-        &-item {
-          display: flex;
-          flex-direction: column;
-          width: 50%;
-          @media (max-width: 768px) {
-            width: 100%;
-          }
-          &-container {
-            background-color: white;
-            padding: 16px;
-            border-radius: 8px;
-            box-shadow: -2px 4px 8px rgba(0, 0, 0, 0.5);
-            border-bottom: 8px solid #FF715B;
-            @media (max-width: 768px) {
-              height: 120px;
-            }
-          }
-          &-period {
-            width: 120px;
-            padding-bottom: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            color: black;
-            border-bottom: 1px solid black;
-          }
-          &-title {
-            color: black;
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 12px;
-          }
-          &-description {
-            border-radius: 8px;
-            margin-top: 4px;
-            font-size: 16px;
-            color: black;
-            padding-bottom: 8px;
+    &-image {
+      flex: 1;
+      img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
 
-          }
+        &:hover {
+          transform: scale(1.02);
         }
       }
-      
     }
-    &__experience {
-      display: flex;
-      width: 778px;
-      background-color: rgb(126, 142, 170);
-      padding: 32px;
-      border: 2px solid white;
-      border-radius: 8px;
-      flex-direction: column;
-      gap: 24px;
-      @media (max-width: 768px) {
-        width: 336px;
-        padding: 12px;
-        gap: 20px;
+
+    &-education {
+      width: 100%;
+      .education-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        &-content {
+          padding: 24px;
+        }
       }
-      &-title {
-        font-size: 32px;
+
+      .education-period {
+        color: #FF715B;
+        font-size: 14px;
         font-weight: bold;
-        text-shadow: -3px 2px 2px rgba(0, 0, 0, 0.5);
-        background-color: rgb(98, 152, 218);
-        padding: 4px 12px;
-        border-radius: 8px;
-        box-shadow: -2px 4px 8px rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: flex-end;
-        @media (max-width: 768px) {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
+        margin-bottom: 12px;
       }
 
-   
-      &-description {
-        display: flex;
-        gap: 12px;
-        @media (max-width: 768px) {
-          align-items: center;
-          display: flex;
-          flex-direction: column;
-          gap: 20px
-        }
-        &-item {
-          display: flex;
-          flex-direction: column;
-          width: 50%;
-          @media (max-width: 768px) {
-            width: 100%;
-          }
-          &-container {
-            background-color: white;
-            padding: 16px;
-            border-radius: 8px;
-            box-shadow: -2px 4px 8px rgba(0, 0, 0, 0.5);
-            border-bottom: 8px solid #a587de;
-            height: 140px;
-            
-            @media (max-width: 768px) {
-              height: 128px;
-            }
-          }
-          &-period {
-            width: 180px;
-            padding-bottom: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            color: black;
-            border-bottom: 1px solid black;
-          }
-          &-title {
-            color: black;
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 12px;
-          }
-          &-description {
-            border-radius: 8px;
-            margin-top: 4px;
-            font-size: 16px;
-            color: black;
-            padding-bottom: 8px;
-
-          }
-        }
+      .education-degree {
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 8px;
       }
-      
+
+      .education-school {
+        color: #e0e0e0;
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+
+      .education-details {
+        color: #b0b0b0;
+        font-size: 14px;
+        line-height: 1.6;
+      }
     }
   }
+
+  &__experience {
+    width: 90%;
+    max-width: 1000px;
+    background: linear-gradient(145deg, #2a3b4c, #1a2a3a);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+    &-title {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 40px;
+      color: white;
+      text-align: center;
+      background: linear-gradient(45deg, #FF715B, #FF9F8C);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(45deg, #FF715B, #FF9F8C);
+        border-radius: 2px;
+      }
+    }
+
+    .experience-cards {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+    }
+
+    .experience-card {
+      flex: 1;
+      min-width: 300px;
+      max-width: 450px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        border-color: rgba(255, 113, 91, 0.3);
+      }
+
+      &-content {
+        padding: 24px;
+      }
+    }
+
+    .experience-period {
+      color: #FF715B;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 12px;
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(255, 113, 91, 0.1);
+      border-radius: 20px;
+    }
+
+    .experience-title {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .experience-company {
+      color: #e0e0e0;
+      font-size: 16px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .company-icon {
+        font-size: 18px;
+      }
+    }
+
+    .experience-description {
+      color: #b0b0b0;
+      font-size: 14px;
+      line-height: 1.6;
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          position: relative;
+          padding-left: 20px;
+          margin-bottom: 8px;
+
+          &::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #FF715B;
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
 </style>

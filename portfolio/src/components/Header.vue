@@ -74,8 +74,8 @@ header {
     font-weight: bolder;
     cursor: pointer;
     @media (max-width: 768px) {
-        font-size: 10px;
-        padding: 6px 8px;
+        font-size: 12px;
+        padding: 6px 10px;
     }
   }
   &__button:hover {
@@ -87,7 +87,7 @@ header {
     font-weight: bold;
     color: white;
     @media (max-width: 768px) {
-        font-size: 12px;
+        font-size: 14px;
     }
   }
 }
@@ -104,7 +104,9 @@ header {
       margin: 0;
       padding: 0;
       @media (max-width: 768px) {
-        gap: 28px;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
       li {
         a {
@@ -115,7 +117,7 @@ header {
                 text-decoration: underline;
             }
             @media (max-width: 768px) {
-                font-size: 12px;
+                font-size: 14px;
                 font-weight: bold;
             }
         }
