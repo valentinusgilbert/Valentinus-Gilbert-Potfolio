@@ -38,7 +38,7 @@
             <div class="education-school">Universitas Bina Nusantara</div>
             <div class="education-details">
               • Major in Computer Science<br>
-              • GPA: 3915/4.00<br>
+              • GPA: 3.91/4.00<br>
             </div>
           </div>
         </div>
