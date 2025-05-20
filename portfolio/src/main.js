@@ -10,7 +10,7 @@ app.mount('#app')
 
 // Initialize AOS
 AOS.init({
-  duration: 800,
+  duration: 1200,
   once: true,
   offset: 100
 })
