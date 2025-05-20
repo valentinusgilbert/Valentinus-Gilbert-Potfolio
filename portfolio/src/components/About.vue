@@ -10,7 +10,7 @@
             <p class="greeting">Hi, I'm Valentinus Gilbert Sanjaya</p>
             <p class="role">Software Developer</p>
             <p class="description">
-              I'm a passionate software developer with expertise in web development, specializing in Vue.js and React.js. 
+              I'm a passionate software developer with expertise in web development, specializing in Vue.js. 
               I love creating elegant solutions to complex problems and am always eager to learn new technologies.
             </p>
             <div class="skills">
@@ -88,29 +88,21 @@
     <div class="about__stats-section" data-aos="fade-up" data-aos-delay="200">
       <div class="about__stats-content">
         <div class="about__stats-left">
-          <div class="about__stats-title">25+ Years of Experience</div>
+          <div class="about__stats-title">2+ Years of Experience</div>
           <div class="about__stats-desc">
-            Sample text. Click to select the Text Element. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            I turn ideas and designs into functional, beautiful websites. With 2+ years of experience, I help businesses stand out through clean code and smart UI.
           </div>
           <button class="about__stats-btn">HIRE ME NOW →</button>
         </div>
         <div class="about__stats-right">
           <div class="about__stats-grid">
             <div class="about__stats-item">
-              <div class="about__stats-value">1200</div>
+              <div class="about__stats-value">10+</div>
               <div class="about__stats-label">SATISFIED CLIENTS</div>
             </div>
             <div class="about__stats-item">
-              <div class="about__stats-value">5490</div>
+              <div class="about__stats-value">10+</div>
               <div class="about__stats-label">SUCCESSFULLY PROJECTS</div>
-            </div>
-            <div class="about__stats-item">
-              <div class="about__stats-value">13+</div>
-              <div class="about__stats-label">AWARD WINNING</div>
-            </div>
-            <div class="about__stats-item">
-              <div class="about__stats-value">98%</div>
-              <div class="about__stats-label">CLIENT REVIEW</div>
             </div>
           </div>
         </div>
@@ -119,42 +111,93 @@
 
     <div class="about__carousel-section" data-aos="fade-up" data-aos-delay="300">
       <div class="about__carousel-title">My Projects</div>
-      <Carousel :items-to-show="1.2" :wrap-around="true" class="about__carousel">
-        <Slide v-for="(project, idx) in projects" :key="idx">
-          <div class="about__carousel-card">
-            <img :src="project.image" :alt="project.title" class="about__carousel-img" />
-            <div class="about__carousel-card-content">
-              <div class="about__carousel-card-title">{{ project.title }}</div>
-              <div class="about__carousel-card-desc">{{ project.desc }}</div>
+      <div class="about__carousel-wrapper">
+        <swiper
+          :modules="[SwiperAutoplay, SwiperPagination]"
+          :slides-per-view="slidesPerView"
+          :space-between="20"
+          :loop="true"
+          :autoplay="{ delay: 3000, disableOnInteraction: false }"
+          :pagination="{ clickable: true }"
+          class="about__carousel"
+        >
+          <swiper-slide v-for="(project, idx) in projects" :key="idx">
+            <div class="about__carousel-card">
+              <img :src="project.image" :alt="project.title" class="about__carousel-img" />
+              <div class="about__carousel-card-content">
+                <div class="about__carousel-card-title">{{ project.title }}</div>
+                <div class="about__carousel-card-desc">{{ project.desc }}</div>
+                <a v-if="project.link" :href="project.link" target="_blank" rel="noopener" class="about__carousel-btn">See Project</a>
+                <button v-else class="about__carousel-btn" disabled style="opacity:0.6;cursor:not-allowed;">Cant See Project</button>
+              </div>
             </div>
-          </div>
-        </Slide>
-      </Carousel>
+          </swiper-slide>
+        </swiper>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { Carousel, Slide } from 'vue3-carousel';
-import 'vue3-carousel/dist/carousel.css';
+import { ref, onMounted, onUnmounted } from 'vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+const SwiperAutoplay = Autoplay;
+const SwiperPagination = Pagination;
+
+const slidesPerView = ref(1);
+
+const updateSlidesPerView = () => {
+  slidesPerView.value = window.innerWidth > 768 ? 3 : 1;
+};
+
+onMounted(() => {
+  updateSlidesPerView();
+  window.addEventListener('resize', updateSlidesPerView);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateSlidesPerView);
+});
 
 const projects = ref([
   {
-    image: 'https://via.placeholder.com/320x200?text=Project+1',
-    title: 'E-Commerce Platform',
-    desc: 'A modern e-commerce web app with Vue.js, payment integration, and admin dashboard.'
+    image: new URL('../assets/project/bicooks.jpeg', import.meta.url).href,
+    title: 'Bicooks - Mobile App',
+    desc: 'Cooking App which build using Expo Framework based on React Native',
   },
   {
-    image: 'https://via.placeholder.com/320x200?text=Project+2',
-    title: 'Company Profile',
-    desc: 'Responsive company profile website with custom CMS and SEO optimization.'
+    image: new URL('../assets/project/vision-crm.jpeg', import.meta.url).href,
+    title: 'Vision CRM Web App',
+    desc: 'Customer Relationship Management which built using Next Js Framework based on React JS for insurance agency',
+    link: 'https://www.visionvip.id'
   },
   {
-    image: 'https://via.placeholder.com/320x200?text=Project+3',
-    title: 'Portfolio Website',
-    desc: 'Personal portfolio with interactive animations and project showcase.'
-  }
+    image: new URL('../assets/project/sewas.jpeg', import.meta.url).href,
+    title: 'Sewas - Rent Marketplace',
+    desc: 'Rent Marketplace build using Laravel and MySQL',
+  },
+  {
+    image: new URL('../assets/project/git-profile-finder.jpeg', import.meta.url).href,
+    title: 'Git Profile Finder',
+    desc: 'Search git username profile and will show the profile detail and the repos',
+    link: 'https://git-profile-finder-valentinus.vercel.app/'
+  },
+  {
+    image: new URL('../assets/project/noka.jpeg', import.meta.url).href,
+    title: 'NOKA',
+    desc: 'Game Website Project (College Project)',
+    link: 'https://noka-3-valentinus-gilbert.netlify.app/'
+  },
+  {
+    image: new URL('../assets/project/furnid.jpeg', import.meta.url).href,
+    title: 'Furnid',
+    desc: 'Furniture Shop Website (College Project)',
+    link: 'https://furnid-valentinusgilbert.netlify.app/'
+  },
 ]);
 </script>
 
@@ -172,6 +215,9 @@ const projects = ref([
   &__container {
     width: 90%;
     max-width: 1000px;
+    @media screen and (max-width: 768px) {
+      max-width: 380px;
+    }
     background: linear-gradient(145deg, #2a3b4c, #1a2a3a);
     border-radius: 20px;
     padding: 40px;
@@ -249,7 +295,7 @@ const projects = ref([
       flex: 1;
       img {
         width: 100%;
-        max-width: 400px;
+        max-width: 380px;
         border-radius: 12px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         transition: transform 0.3s ease;
@@ -262,6 +308,9 @@ const projects = ref([
 
     &-education {
       width: 100%;
+      @media screen and (max-width: 768px) {
+        max-width: 380px;
+      }
       .education-card {
         background: rgba(255, 255, 255, 0.05);
         border-radius: 16px;
@@ -310,6 +359,9 @@ const projects = ref([
   &__experience {
     width: 90%;
     max-width: 1000px;
+    @media screen and (max-width: 768px) {
+      max-width: 380px;
+    }
     background: linear-gradient(145deg, #2a3b4c, #1a2a3a);
     border-radius: 20px;
     padding: 40px;
@@ -438,14 +490,13 @@ const projects = ref([
     max-width: 1000px;
     background: #fff;
     border-radius: 20px;
-    margin: 40px auto 0 auto;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    padding: 40px 32px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    @media (max-width: 768px) {
-      padding: 24px 8px;
+    @media screen and (max-width: 768px) {
+      max-width: 380px;
     }
     .about__stats-content {
       display: flex;
@@ -496,7 +547,6 @@ const projects = ref([
         grid-template-columns: repeat(2, 1fr);
         gap: 32px 48px;
         @media (max-width: 600px) {
-          grid-template-columns: 1fr;
           gap: 20px;
         }
         .about__stats-item {
@@ -521,11 +571,49 @@ const projects = ref([
 
   &__carousel-section {
     width: 90%;
-    max-width: 1000px;
-    margin: 48px auto 0 auto;
+    max-width: 1080px;
+    @media screen and (max-width: 768px) {
+      width: 100vw;
+      max-width: 100vw;
+    }
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
+
+    .about__carousel-wrapper {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about__carousel {
+      width: 100%;
+      padding-bottom: 40px;
+      overflow: visible;
+      
+      :deep(.swiper-wrapper) {
+        overflow: visible;
+      }
+
+      :deep(.swiper-slide) {
+        width: auto;
+        height: auto;
+      }
+      
+      :deep(.swiper-pagination) {
+        bottom: 0;
+      }
+      
+      :deep(.swiper-pagination-bullet) {
+        background: #FF715B;
+        opacity: 0.5;
+      }
+      
+      :deep(.swiper-pagination-bullet-active) {
+        opacity: 1;
+      }
+    }
     .about__carousel-title {
       font-size: 32px;
       font-weight: bold;
@@ -536,13 +624,6 @@ const projects = ref([
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .about__carousel {
-      width: 100%;
-      .carousel__slide {
-        display: flex;
-        justify-content: center;
-      }
-    }
     .about__carousel-card {
       background: #fff;
       border-radius: 16px;
@@ -551,7 +632,7 @@ const projects = ref([
       display: flex;
       flex-direction: column;
       align-items: center;
-      max-width: 400px;
+      max-width: 380px;
       margin: 0 auto;
       transition: box-shadow 0.2s;
       &:hover {
@@ -565,6 +646,10 @@ const projects = ref([
       margin-bottom: 20px;
       object-fit: cover;
       box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      aspect-ratio: 16/10;
+      height: auto;
+      min-height: 200px;
+      background: #f3f3f3;
     }
     .about__carousel-card-content {
       text-align: center;
@@ -578,6 +663,25 @@ const projects = ref([
         font-size: 15px;
         color: #444;
       }
+    }
+    .about__carousel-btn {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 10px 28px;
+      background: #FF715B;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(255,113,91,0.10);
+      cursor: pointer;
+    }
+    .about__carousel-btn:hover {
+      background: #ff8c6b;
+      box-shadow: 0 4px 16px rgba(255,113,91,0.18);
     }
   }
 }
