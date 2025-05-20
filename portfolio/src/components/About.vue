@@ -84,10 +84,79 @@
         </div>
       </div>
     </div>
+
+    <div class="about__stats-section" data-aos="fade-up" data-aos-delay="200">
+      <div class="about__stats-content">
+        <div class="about__stats-left">
+          <div class="about__stats-title">25+ Years of Experience</div>
+          <div class="about__stats-desc">
+            Sample text. Click to select the Text Element. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </div>
+          <button class="about__stats-btn">HIRE ME NOW →</button>
+        </div>
+        <div class="about__stats-right">
+          <div class="about__stats-grid">
+            <div class="about__stats-item">
+              <div class="about__stats-value">1200</div>
+              <div class="about__stats-label">SATISFIED CLIENTS</div>
+            </div>
+            <div class="about__stats-item">
+              <div class="about__stats-value">5490</div>
+              <div class="about__stats-label">SUCCESSFULLY PROJECTS</div>
+            </div>
+            <div class="about__stats-item">
+              <div class="about__stats-value">13+</div>
+              <div class="about__stats-label">AWARD WINNING</div>
+            </div>
+            <div class="about__stats-item">
+              <div class="about__stats-value">98%</div>
+              <div class="about__stats-label">CLIENT REVIEW</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about__carousel-section" data-aos="fade-up" data-aos-delay="300">
+      <div class="about__carousel-title">My Projects</div>
+      <Carousel :items-to-show="1.2" :wrap-around="true" class="about__carousel">
+        <Slide v-for="(project, idx) in projects" :key="idx">
+          <div class="about__carousel-card">
+            <img :src="project.image" :alt="project.title" class="about__carousel-img" />
+            <div class="about__carousel-card-content">
+              <div class="about__carousel-card-title">{{ project.title }}</div>
+              <div class="about__carousel-card-desc">{{ project.desc }}</div>
+            </div>
+          </div>
+        </Slide>
+      </Carousel>
+    </div>
   </div>
 </template>
 
-<script src="./js/about.js"></script>
+<script setup>
+import { ref } from 'vue';
+import { Carousel, Slide } from 'vue3-carousel';
+import 'vue3-carousel/dist/carousel.css';
+
+const projects = ref([
+  {
+    image: 'https://via.placeholder.com/320x200?text=Project+1',
+    title: 'E-Commerce Platform',
+    desc: 'A modern e-commerce web app with Vue.js, payment integration, and admin dashboard.'
+  },
+  {
+    image: 'https://via.placeholder.com/320x200?text=Project+2',
+    title: 'Company Profile',
+    desc: 'Responsive company profile website with custom CMS and SEO optimization.'
+  },
+  {
+    image: 'https://via.placeholder.com/320x200?text=Project+3',
+    title: 'Portfolio Website',
+    desc: 'Personal portfolio with interactive animations and project showcase.'
+  }
+]);
+</script>
 
 <style lang="scss" scoped>
 .about {
@@ -360,6 +429,154 @@
             margin-bottom: 0;
           }
         }
+      }
+    }
+  }
+
+  &__stats-section {
+    width: 90%;
+    max-width: 1000px;
+    background: #fff;
+    border-radius: 20px;
+    margin: 40px auto 0 auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media (max-width: 768px) {
+      padding: 24px 8px;
+    }
+    .about__stats-content {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+      @media (max-width: 900px) {
+        flex-direction: column;
+        gap: 24px;
+        align-items: flex-start;
+      }
+    }
+    .about__stats-left {
+      flex: 1;
+      min-width: 220px;
+      .about__stats-title {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 16px;
+        color: #222;
+      }
+      .about__stats-desc {
+        font-size: 16px;
+        color: #444;
+        margin-bottom: 24px;
+        max-width: 350px;
+      }
+      .about__stats-btn {
+        background: #556775;
+        color: #fff;
+        border: none;
+        border-radius: 24px;
+        padding: 12px 32px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+        &:hover {
+          background: #FF715B;
+        }
+      }
+    }
+    .about__stats-right {
+      flex: 1.2;
+      .about__stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px 48px;
+        @media (max-width: 600px) {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .about__stats-item {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          .about__stats-value {
+            font-size: 36px;
+            font-weight: bold;
+            color: #3a5ba0;
+          }
+          .about__stats-label {
+            font-size: 14px;
+            color: #888;
+            font-weight: 600;
+            margin-top: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  &__carousel-section {
+    width: 90%;
+    max-width: 1000px;
+    margin: 48px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .about__carousel-title {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 32px;
+      color: #222;
+      text-align: center;
+      background: linear-gradient(45deg, #FF715B, #FF9F8C);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .about__carousel {
+      width: 100%;
+      .carousel__slide {
+        display: flex;
+        justify-content: center;
+      }
+    }
+    .about__carousel-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.10);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 400px;
+      margin: 0 auto;
+      transition: box-shadow 0.2s;
+      &:hover {
+        box-shadow: 0 12px 32px rgba(255,113,91,0.18);
+      }
+    }
+    .about__carousel-img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    }
+    .about__carousel-card-content {
+      text-align: center;
+      .about__carousel-card-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #3a5ba0;
+      }
+      .about__carousel-card-desc {
+        font-size: 15px;
+        color: #444;
       }
     }
   }
