@@ -177,7 +177,7 @@ const projects = ref([
     image: new URL('../assets/project/visionvip.jpeg', import.meta.url).href,
     title: 'Vision CRM Web App',
     desc: 'Customer Relationship Management which built using Next Js Framework based on React JS for insurance agency',
-    link: 'https://www.visionvip.id'
+    link: 'https://visionvip.id'
   },
   {
     image: new URL('../assets/project/sewas.jpeg', import.meta.url).href,
