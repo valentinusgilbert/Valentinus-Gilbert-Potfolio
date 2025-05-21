@@ -185,6 +185,12 @@ const projects = ref([
     desc: 'Link in Bio Website and generative template profile website build using Next Js Framework based on React JS',
   },
   {
+    image: new URL('../assets/project/talpapos.jpeg', import.meta.url).href,
+    title: 'Talpapos - Website Aplikasi POS',
+    desc: 'Point of Sale Website build using Laravel and MySQL',
+    link: 'https://talpapos.com'
+  },
+  {
     image: new URL('../assets/project/sewas.jpeg', import.meta.url).href,
     title: 'Sewas - Rent Marketplace',
     desc: 'Rent Marketplace build using Laravel and MySQL',
