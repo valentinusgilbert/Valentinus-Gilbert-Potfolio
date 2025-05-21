@@ -1,10 +1,10 @@
 import HelloWorld from '@/components/HelloWorld.vue';
 import { onMounted, ref } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faWhatsapp, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faWhatsapp, faInstagram, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
-library.add(faWhatsapp, faInstagram, faLinkedin);
+library.add(faWhatsapp, faInstagram, faLinkedin, faGithub);
 
 export default {
     components: {
@@ -160,6 +160,10 @@ export default {
             window.open('https://www.linkedin.com/in/valentinus-gilbert-sanjaya-770b26217/', '_blank');
         };
 
+        const openGitHub = () => {
+            window.open('https://github.com/valentinusgilbert', '_blank');
+        };
+
         return {
             // isPlaying,
             // togglePlay,
@@ -167,7 +171,8 @@ export default {
             // dogSpeed
             openWhatsApp,
             openInstagram,
-            openLinkedIn
+            openLinkedIn,
+            openGitHub
         };
     }
 };
