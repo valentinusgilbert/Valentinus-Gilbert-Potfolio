@@ -180,6 +180,11 @@ const projects = ref([
     link: 'https://visionvip.id'
   },
   {
+    image: new URL('../assets/project/vvip.jpeg', import.meta.url).href,
+    title: 'VVIP.CO.ID (In Progress )',
+    desc: 'Link in Bio Website and generative template profile website build using Next Js Framework based on React JS',
+  },
+  {
     image: new URL('../assets/project/sewas.jpeg', import.meta.url).href,
     title: 'Sewas - Rent Marketplace',
     desc: 'Rent Marketplace build using Laravel and MySQL',
