@@ -43,10 +43,10 @@
     <div class="about">
       <About />
     </div>
-    <!-- <div class="section-divider"/>
-    <div class="project">
-      <Project />
-    </div> -->
+    <div class="section-divider"/>
+    <div class="contact">
+      <Contact />
+    </div>  
     <Footer />
   </div>
 
@@ -85,6 +85,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .divider-1 {

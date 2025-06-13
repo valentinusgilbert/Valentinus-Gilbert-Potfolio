@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div id="about" class="about">
     <div class="about__container" data-aos="fade-up">
       <div class="about__container-content">
         <div class="about__container-text">
@@ -10,15 +10,19 @@
             <p class="greeting">Hi, I'm Valentinus Gilbert Sanjaya</p>
             <p class="role">Software Developer</p>
             <p class="description">
-              I'm a passionate software developer with expertise in web development, specializing in Vue.js. 
+              I'm a passionate software developer with expertise in web development, specializing in modern frameworks like Vue.js and React.js.
               I love creating elegant solutions to complex problems and am always eager to learn new technologies.
             </p>
             <div class="skills">
               <div class="skill-tag">Vue.js</div>
+              <div class="skill-tag">Next.js</div>
               <div class="skill-tag">React.js</div>
+              <div class="skill-tag">React Native</div>
               <div class="skill-tag">JavaScript</div>
               <div class="skill-tag">TypeScript</div>
               <div class="skill-tag">HTML/CSS</div>
+              <div class="skill-tag">Node.js</div>
+              <div class="skill-tag">Cloud Deployment</div>
             </div>
           </div>
         </div>
@@ -33,9 +37,8 @@
             <div class="education-degree">Bachelor of Computer Science</div>
             <div class="education-school">Universitas Bina Nusantara</div>
             <div class="education-details">
-              • Major in Software Engineering<br>
-              • GPA: 3.85/4.00<br>
-              • Active in Programming Club
+              • Major in Computer Science<br>
+              • GPA: 3915/4.00<br>
             </div>
           </div>
         </div>
@@ -109,7 +112,7 @@
       </div>
     </div>
 
-    <div class="about__carousel-section" data-aos="fade-up" data-aos-delay="300">
+    <div id="project" class="about__carousel-section" data-aos="fade-up" data-aos-delay="300">
       <div class="about__carousel-title">My Projects</div>
       <div class="about__carousel-wrapper">
         <swiper
