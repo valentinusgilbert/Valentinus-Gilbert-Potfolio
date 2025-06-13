@@ -193,7 +193,7 @@ const projects = ref([
   {
     image: new URL('../assets/project/fs.jpeg', import.meta.url).href,
     title: 'Blibli - Finacial Service Product',
-    desc: 'In my internship in Blibli, I was assigned to develeop and maintainingthe financial service product',
+    desc: 'In my internship in Blibli, I was assigned to develeop and maintaining the financial service product front end',
     link: 'https://www.blibli.com/keuangan?appsWebview=true'
   },
 
