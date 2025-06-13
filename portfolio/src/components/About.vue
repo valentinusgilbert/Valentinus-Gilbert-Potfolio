@@ -1,5 +1,31 @@
 <template>
   <div id="about" class="about">
+    <div id="project" class="about__carousel-section" data-aos="fade-up" data-aos-delay="300">
+      <div class="about__carousel-title">My Projects</div>
+      <div class="about__carousel-wrapper">
+        <swiper
+          :modules="[SwiperAutoplay, SwiperPagination]"
+          :slides-per-view="slidesPerView"
+          :space-between="20"
+          :loop="true"
+          :autoplay="{ delay: 3000, disableOnInteraction: false }"
+          :pagination="{ clickable: true }"
+          class="about__carousel"
+        >
+          <swiper-slide v-for="(project, idx) in projects" :key="idx">
+            <div class="about__carousel-card">
+              <img :src="project.image" :alt="project.title" class="about__carousel-img" />
+              <div class="about__carousel-card-content">
+                <div class="about__carousel-card-title">{{ project.title }}</div>
+                <div class="about__carousel-card-desc">{{ project.desc }}</div>
+                <a v-if="project.link" :href="project.link" target="_blank" rel="noopener" class="about__carousel-btn">See Project</a>
+                <button v-else class="about__carousel-btn" disabled style="opacity:0.6;cursor:not-allowed;">Cant See Project</button>
+              </div>
+            </div>
+          </swiper-slide>
+        </swiper>
+      </div>
+    </div>
     <div class="about__container" data-aos="fade-up">
       <div class="about__container-content">
         <div class="about__container-text">
@@ -113,32 +139,7 @@
       </div>
     </div>
 
-    <div id="project" class="about__carousel-section" data-aos="fade-up" data-aos-delay="300">
-      <div class="about__carousel-title">My Projects</div>
-      <div class="about__carousel-wrapper">
-        <swiper
-          :modules="[SwiperAutoplay, SwiperPagination]"
-          :slides-per-view="slidesPerView"
-          :space-between="20"
-          :loop="true"
-          :autoplay="{ delay: 3000, disableOnInteraction: false }"
-          :pagination="{ clickable: true }"
-          class="about__carousel"
-        >
-          <swiper-slide v-for="(project, idx) in projects" :key="idx">
-            <div class="about__carousel-card">
-              <img :src="project.image" :alt="project.title" class="about__carousel-img" />
-              <div class="about__carousel-card-content">
-                <div class="about__carousel-card-title">{{ project.title }}</div>
-                <div class="about__carousel-card-desc">{{ project.desc }}</div>
-                <a v-if="project.link" :href="project.link" target="_blank" rel="noopener" class="about__carousel-btn">See Project</a>
-                <button v-else class="about__carousel-btn" disabled style="opacity:0.6;cursor:not-allowed;">Cant See Project</button>
-              </div>
-            </div>
-          </swiper-slide>
-        </swiper>
-      </div>
-    </div>
+    
   </div>
 </template>
 
