@@ -170,7 +170,7 @@ const projects = ref([
     desc: 'Cooking App which build using Expo Framework based on React Native',
   },
   {
-    image: new URL('../assets/project/vision-crm.jpeg', import.meta.url).href,
+    image: new URL('../assets/project/visionvip.jpeg', import.meta.url).href,
     title: 'Vision CRM Web App',
     desc: 'Customer Relationship Management which built using Next Js Framework based on React JS for insurance agency',
     link: 'https://www.visionvip.id'
