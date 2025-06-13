@@ -44,6 +44,7 @@
         </div>
       </div>
     </div>
+    
 
     <div class="about__experience" data-aos="fade-up" data-aos-delay="100">
       <div class="about__experience-title">
