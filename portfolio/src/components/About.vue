@@ -191,6 +191,13 @@ const projects = ref([
     link: 'https://talpapos.com'
   },
   {
+    image: new URL('../assets/project/fs.jpeg', import.meta.url).href,
+    title: 'Blibli - Finacial Service Product',
+    desc: 'In my internship in Blibli, I was assigned to develeop and maintainingthe financial service product',
+    link: 'https://www.blibli.com/keuangan?appsWebview=true'
+  },
+
+  {
     image: new URL('../assets/project/sewas.jpeg', import.meta.url).href,
     title: 'Sewas - Rent Marketplace',
     desc: 'Rent Marketplace build using Laravel and MySQL',
