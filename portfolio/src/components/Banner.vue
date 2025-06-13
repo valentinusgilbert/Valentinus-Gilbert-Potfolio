@@ -34,6 +34,9 @@
                 <div class="banner-image__social-icon" @click="openLinkedIn">
                     <FontAwesomeIcon :icon="['fab', 'linkedin']" />
                 </div>
+                <div class="banner-image__social-icon" @click="openGitHub">
+                    <FontAwesomeIcon :icon="['fab', 'github']" />
+                </div>
             </div>
         </div>
     </div>
@@ -62,6 +65,25 @@
 </template>
 
 <script src="./js/banner.js"></script>
+
+<script>
+export default {
+    methods: {
+        openWhatsApp() {
+            window.open('https://wa.me/your_number', '_blank');
+        },
+        openInstagram() {
+            window.open('https://www.instagram.com/your_username', '_blank');
+        },
+        openLinkedIn() {
+            window.open('https://www.linkedin.com/in/your_username', '_blank');
+        },
+        openGitHub() {
+            window.open('https://github.com/valentinusgilbert', '_blank');
+        }
+    }
+}
+</script>
 
 <style lang="scss" scoped>
 .banner {
