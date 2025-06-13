@@ -181,8 +181,9 @@ const projects = ref([
   },
   {
     image: new URL('../assets/project/vvip.jpeg', import.meta.url).href,
-    title: 'VVIP.CO.ID (In Progress )',
-    desc: 'Link in Bio Website and generative template profile website build using Next Js Framework based on React JS',
+    title: 'VVIP.CO.ID',
+    desc: 'Link in Bio Website and generative template profile website for insurance agency build using Next Js Framework based on React JS',
+    link: 'https://vvip.co.id/vagilsan'
   },
   {
     image: new URL('../assets/project/talpapos.jpeg', import.meta.url).href,
