@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://valentinusgilbert.vercel.app/sitemap.xml 
