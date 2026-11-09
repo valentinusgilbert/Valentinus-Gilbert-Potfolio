@@ -116,7 +116,7 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped lang="scss">
-.hero { position: relative; isolation: isolate; padding-block: 64px 28px; }
+.hero { position: relative; isolation: isolate; display: flex; flex-direction: column; padding-block: 64px 0; }
 .hero-layout { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr); grid-template-areas: 'copy portrait' 'socials portrait'; gap: 20px 64px; align-items: center; }
 .hero-copy { grid-area: copy; }
 .hero-socials { grid-area: socials; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -149,6 +149,25 @@ figcaption { margin-top: 18px; text-align: center; font-size: 13px; color: var(-
 @media (max-width: 950px) {
   .hero-layout { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 32px; }
   .hero-summary { font-size: 18px; }
+}
+@media (min-width: 651px) {
+  .hero { min-height: calc(100dvh - 90px); }
+}
+@media (min-width: 651px) and (max-height: 930px) {
+  .hero { padding-top: 48px; }
+  h1 { font-size: clamp(64px, 7.4vw, 108px); margin-block: 20px; }
+  .hero-layout { gap: 16px 64px; }
+  .hero-tabs { margin-bottom: 16px; }
+  .hero-actions { margin-top: 22px; }
+  .hero-status { margin-top: 14px; }
+}
+@media (min-width: 651px) and (max-height: 850px) {
+  .hero { padding-top: 32px; }
+  h1 { font-size: clamp(62px, 6.7vw, 96px); margin-block: 16px; }
+  .hero-layout { gap: 14px 64px; }
+  .hero-tabs { margin-bottom: 14px; }
+  .hero-actions { margin-top: 20px; }
+  .hero-status { margin-top: 12px; }
 }
 @media (max-width: 650px) {
   .hero { padding-top: 36px; }

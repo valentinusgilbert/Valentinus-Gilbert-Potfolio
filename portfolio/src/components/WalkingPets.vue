@@ -41,8 +41,8 @@ const pets = [
 </template>
 
 <style scoped lang="scss">
-.walking-pets { --pet-size: 56px; margin-top: 40px; }
-.pets-track { display: block; position: relative; width: 100%; height: 64px; padding: 0; border: 0; background: transparent; overflow: hidden; }
+.walking-pets { --pet-size: 56px; margin-top: auto; padding-top: 40px; }
+.pets-track { display: block; position: relative; width: 100%; height: var(--pet-size); padding: 0; border: 0; background: transparent; overflow: hidden; }
 .pet-walker { position: absolute; top: 0; left: 0; width: calc(100% - var(--pet-size)); height: var(--pet-size); transform: translateX(var(--rest)); animation: pet-stroll var(--pace) linear var(--delay) infinite alternate; }
 .pet-sprite { display: block; width: var(--pet-size); height: var(--pet-size); transform: scaleX(var(--facing)); animation: pet-turn var(--cycle) step-end var(--delay) infinite; }
 .pet-sprite img { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
@@ -50,8 +50,13 @@ const pets = [
 @keyframes pet-stroll { from { transform: translateX(0); } to { transform: translateX(100%); } }
 @keyframes pet-turn { 0%, 100% { transform: scaleX(var(--facing)); } 50% { transform: scaleX(calc(var(--facing) * -1)); } }
 @media (max-width: 600px) {
-  .walking-pets { --pet-size: 36px; margin-top: 24px; }
-  .pets-track { height: 44px; }
+  .walking-pets { --pet-size: 36px; padding-top: 24px; }
+}
+@media (min-width: 651px) and (max-height: 930px) {
+  .walking-pets { padding-top: 28px; }
+}
+@media (min-width: 651px) and (max-height: 850px) {
+  .walking-pets { padding-top: 20px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .pet-walker, .pet-sprite { animation: none; }

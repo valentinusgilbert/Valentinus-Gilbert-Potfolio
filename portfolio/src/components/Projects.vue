@@ -37,7 +37,7 @@ onBeforeUnmount(() => window.removeEventListener('hashchange', syncFromHash));
   <section id="projects" class="work section-space" aria-labelledby="work-title">
     <div class="shell">
       <div class="section-intro">
-        <div><h2 id="work-title">The things I build.</h2><p class="work-count">{{ projects.length }} projects, from experiments to everyday tools.</p></div>
+        <div><h2 id="work-title">The things I build.</h2><p class="work-count">{{ projects.length }} public projects, from experiments to everyday tools.</p><p class="work-private"><span>Internal</span> Some company work stays private — voucher email delivery, a factory handy-terminal app, HRIS, and online recruitment testing.</p></div>
         <p>Pick a project. Take a closer look.</p>
       </div>
 
@@ -61,7 +61,7 @@ onBeforeUnmount(() => window.removeEventListener('hashchange', syncFromHash));
         <div class="project-stage">
           <article :id="projectIds[activeIndex]" :key="current.title" class="project" :class="{ 'project--featured': current.scope, 'project--previous': !current.scope }" aria-labelledby="active-project-title">
             <component :is="current.link ? 'a' : 'div'" class="project-cover" :href="current.link" :target="current.link ? '_blank' : undefined" :rel="current.link ? 'noopener noreferrer' : undefined" :aria-label="current.link ? 'Visit ' + current.title + ' (opens in a new tab)' : undefined">
-              <div class="project-browser-bar"><span class="window-controls" aria-hidden="true"><i></i><i></i><i></i></span><span>{{ current.domain || current.tags[0] }}</span><span v-if="current.link" aria-hidden="true">↗</span></div>
+              <div class="project-browser-bar"><span class="window-controls" aria-hidden="true"><i></i><i></i><i></i></span><span class="project-domain">{{ current.domain || current.tags[0] }}</span><span v-if="current.link" aria-hidden="true">↗</span></div>
               <img v-if="!failedPreviews.includes(current.title)" class="project-preview" :src="current.image" :alt="current.title + ' project screenshot'" width="1440" height="900" loading="lazy" @error="failedPreviews.push(current.title)" />
               <div v-else class="cover-statement"><strong>{{ current.title }}</strong><span>Preview unavailable. {{ current.link ? 'Visit the live project.' : 'Read about the project below.' }}</span></div>
               <span v-if="current.link" class="project-open" aria-hidden="true">↗</span>
@@ -91,6 +91,8 @@ onBeforeUnmount(() => window.removeEventListener('hashchange', syncFromHash));
 <style scoped lang="scss">
 .work { background: var(--surface); }
 .work-count { margin-top: 14px; color: var(--muted); }
+.work-private { display: flex; align-items: flex-start; gap: 8px; max-width: 640px; margin-top: 10px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.work-private > span { flex-shrink: 0; padding: 1px 8px; border: 1px solid #cfd4e4; border-radius: 999px; background: #fff; color: var(--ink); font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
 .project-explorer { display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 32px; align-items: start; }
 .project-mobile-picker { display: none; }
 .project-index { min-width: 0; }
@@ -120,8 +122,12 @@ onBeforeUnmount(() => window.removeEventListener('hashchange', syncFromHash));
 @keyframes project-arrive { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 .project-cover { position: relative; display: block; border-radius: 12px; overflow: hidden; background: #e9edf7; text-decoration: none; transition: transform 300ms var(--ease); }
 .project-browser-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; font-size: 13px; color: #424958; }
-.window-controls { display: inline-flex; gap: 5px; }
-.window-controls i { display: block; width: 6px; height: 6px; border-radius: 50%; background: #a9afbe; }
+.window-controls { display: inline-flex; gap: 6px; }
+.window-controls i { display: block; width: 7px; height: 7px; border-radius: 50%; background: #a9afbe; }
+.window-controls i:nth-child(1) { background: #ff5f57; }
+.window-controls i:nth-child(2) { background: #febc2e; }
+.window-controls i:nth-child(3) { background: #28c840; }
+.project-domain { flex: 1; min-width: 0; overflow: hidden; text-align: center; text-overflow: ellipsis; white-space: nowrap; }
 .project-preview { width: 100%; aspect-ratio: 1.9; object-fit: cover; object-position: top; transition: transform 650ms var(--ease); }
 a.project-cover:hover .project-preview { transform: scale(1.025); }
 .project-open { position: absolute; right: 16px; bottom: 16px; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: #fff; color: var(--ink); font-size: 24px; transform: rotate(-20deg); transition: background-color 180ms, color 180ms, transform 250ms; }
