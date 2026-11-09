@@ -69,14 +69,14 @@ const measure = async () => {
   const heading = layout.querySelector('h1').getBoundingClientRect();
   const portrait = layout.querySelector('.hero-portrait').getBoundingClientRect();
   const mobile = window.matchMedia('(max-width: 650px)').matches;
+  const half = (pacman.value?.offsetWidth || 24) / 2;
   const x = value => Math.round(value - bounds.left);
   const y = value => Math.round(value - bounds.top);
   let points;
   if (mobile) {
-    const half = (pacman.value?.offsetWidth || 24) / 2;
     const gap = 4;
     const left = x(portrait.left - half - gap);
-    const right = x(Math.min(window.innerWidth - half - 4, portrait.right + half + gap));
+    const right = x(Math.min(window.innerWidth - half - 2, portrait.right + half + gap));
     const top = y(portrait.top - half - gap);
     const bottom = y(portrait.bottom + half + gap);
     points = [[left, top], [right, top], [right, bottom], [left, bottom]];
@@ -89,7 +89,7 @@ const measure = async () => {
     const nameSide = Math.min(x(name.right + 28), lane);
     const headingTop = y(heading.top - 12);
     const headingBottom = y(heading.bottom + 12);
-    const right = x(Math.min(window.innerWidth - 24, portrait.right + 24));
+    const right = x(Math.min(window.innerWidth - half - 4, portrait.right + half + 4));
     points = [
       [start, greetingY], [lane, greetingY], [lane, top], [right, top],
       [right, bottom], [lane, bottom],
@@ -153,7 +153,7 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-.hero-chase { --actor-size: 24px; position: absolute; inset: -32px -16px -24px; z-index: -1; pointer-events: none; }
+.hero-chase { --actor-size: clamp(16px, 2.1vw, 24px); position: absolute; inset: -32px -16px -24px; z-index: -1; pointer-events: none; }
 .chase-path { position: absolute; inset: 0; overflow: visible; }
 .chase-pellet { fill: #c6cbde; }
 .chase-actor { position: absolute; top: 0; left: 0; width: var(--actor-size); height: var(--actor-size); }
@@ -168,6 +168,5 @@ onBeforeUnmount(() => {
 .jaw--bottom { bottom: 0; border-radius: 0 0 999px 999px; transform-origin: center top; --open: 32deg; }
 .pacman::after { content: ''; position: absolute; left: 50%; top: 16.7%; width: 12.5%; height: 12.5%; border-radius: 50%; background: #393023; }
 @keyframes pacman-chomp { from { transform: rotate(0); } to { transform: rotate(var(--open)); } }
-@media (max-width: 650px) { .hero-chase { --actor-size: 16px; } }
 @media (prefers-reduced-motion: reduce) { .jaw { animation: none; transform: rotate(var(--open)); } }
 </style>
