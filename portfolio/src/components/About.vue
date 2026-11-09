@@ -16,7 +16,7 @@ const photoFailed = ref(false);
         </figure>
         <div class="about-copy">
           <h2 id="about-title">More than<br />a browser tab.</h2>
-          <p>I’m Valentinus Gilbert Sanjaya, a developer based in Tangerang Selatan. I like the part where a complicated idea finally starts to make sense on screen.</p>
+          <p>I’m Valentinus Gilbert Sanjaya. I like the part where a complicated idea finally starts to make sense on screen.</p>
           <p>I work across frontend, full-stack applications, and ERP consulting. Sometimes that means getting an interaction just right. Sometimes it means understanding how a factory actually works.</p>
           <p>I’m hands-on from the first conversation through design, development, and deployment. And yes, the little animals are staying.</p>
           <div class="about-education"><strong>{{ education.school }}</strong><span>{{ education.degree }}</span><span>{{ education.period.replaceAll('—', '–') }} · GPA {{ education.grade }}</span></div>

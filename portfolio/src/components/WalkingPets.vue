@@ -29,27 +29,20 @@ const pets = [
 
 <template>
   <div class="walking-pets" :class="{ 'is-paused': paused }">
-    <div class="pets-caption">
-      <p>A few friends, tagging along.</p>
-      <button class="pet-toggle" type="button" :aria-pressed="paused" @click="paused = !paused">{{ paused ? 'Resume animals' : 'Pause animals' }}</button>
-    </div>
-    <div class="pets-track" aria-hidden="true">
-      <div v-for="(pet, index) in pets" :key="pet.name" class="pet-walker" :style="{ '--pace': pet.pace + 's', '--cycle': pet.pace * 2 + 's', '--delay': pet.delay + 's', '--facing': pet.facing, '--rest': index / (pets.length - 1) * 100 + '%' }">
+    <button class="pets-track" type="button" :aria-pressed="paused" :aria-label="paused ? 'Resume walking animation' : 'Pause walking animation'" :title="paused ? 'Resume animation' : 'Pause animation'" @click="paused = !paused">
+      <span v-for="(pet, index) in pets" :key="pet.name" class="pet-walker" aria-hidden="true" :style="{ '--pace': pet.pace + 's', '--cycle': pet.pace * 2 + 's', '--delay': pet.delay + 's', '--facing': pet.facing, '--rest': index / (pets.length - 1) * 100 + '%' }">
         <picture class="pet-sprite">
           <source media="(prefers-reduced-motion: reduce)" :srcset="pet.still" />
           <img :src="paused ? pet.still : pet.animated" alt="" width="56" height="56" decoding="async" />
         </picture>
-      </div>
-    </div>
+      </span>
+    </button>
   </div>
 </template>
 
 <style scoped lang="scss">
 .walking-pets { --pet-size: 56px; margin-top: 40px; }
-.pets-caption { display: flex; align-items: center; justify-content: space-between; gap: 16px; color: var(--muted); font-size: 13px; }
-.pet-toggle { min-height: 44px; padding: 8px 0 8px 16px; border: 0; background: transparent; text-decoration: underline; text-underline-offset: 4px; font-size: 13px; }
-.pet-toggle:hover { color: var(--accent); }
-.pets-track { position: relative; height: 64px; overflow: hidden; }
+.pets-track { display: block; position: relative; width: 100%; height: 64px; padding: 0; border: 0; background: transparent; overflow: hidden; }
 .pet-walker { position: absolute; top: 0; left: 0; width: calc(100% - var(--pet-size)); height: var(--pet-size); transform: translateX(var(--rest)); animation: pet-stroll var(--pace) linear var(--delay) infinite alternate; }
 .pet-sprite { display: block; width: var(--pet-size); height: var(--pet-size); transform: scaleX(var(--facing)); animation: pet-turn var(--cycle) step-end var(--delay) infinite; }
 .pet-sprite img { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
@@ -62,6 +55,5 @@ const pets = [
 }
 @media (prefers-reduced-motion: reduce) {
   .pet-walker, .pet-sprite { animation: none; }
-  .pet-toggle { display: none; }
 }
 </style>

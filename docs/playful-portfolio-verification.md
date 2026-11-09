@@ -1,5 +1,7 @@
 # Playful portfolio verification · 9 November 2026
 
+The gallery and hero preview described below record the earlier revision. The latest owner request replaces them with a compact, vertically indexed project explorer and a portrait beside the introduction; see [compact revision verification](compact-portfolio-verification.md).
+
 This revision supersedes the restrained warm-paper design in commit `40ee4d6`. The owner supplied [helloabdullah.com](https://helloabdullah.com/?ref=onepagelove) as a visual reference and explicitly required every earlier project to remain visible.
 
 ## What changed

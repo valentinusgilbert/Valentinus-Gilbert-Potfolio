@@ -1,135 +1,148 @@
 <script setup>
-import { computed, ref } from 'vue';
-import { featuredProjects, social } from '../data/profile';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { social } from '../data/profile';
 import WalkingPets from './WalkingPets.vue';
 import portrait from '../assets/self-photo.png';
+import resume from '../assets/Resume - Valentinus Gilbert Sanjaya.pdf';
+import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
 
-const modes = [
-  { id: 'frontend', label: 'Frontend', title: 'A good interface makes all the difference.', description: 'I turn designs into responsive websites that feel good to use. Vue, Nuxt, React, and the details in between.', project: featuredProjects[1], color: '#eef0ff' },
-  { id: 'fullstack', label: 'Full-stack', title: 'From the first sketch to going live.', description: 'Product planning, interface design, frontend, backend, and deployment. I like seeing the whole thing through.', project: featuredProjects[0], color: '#eaf3f0' },
-  { id: 'erp', label: 'ERP', title: 'There’s a business behind every screen.', description: 'At Toyo, I build custom mcframe ERP modules and full-stack subsystems around how manufacturing teams actually work.', color: '#fff2dc' },
+const profileLinks = [
+  { label: 'GitHub', href: social.github, icon: faGithub },
+  { label: 'LinkedIn', href: social.linkedin, icon: faLinkedinIn },
+  { label: 'CV', href: resume, icon: faFileArrowDown, download: 'Valentinus-Gilbert-Sanjaya-Resume.pdf' },
 ];
-const activeMode = ref(0);
-const previewFailed = ref(false);
-const mode = computed(() => modes[activeMode.value]);
+const portraitTilt = ref({ '--tilt-x': '0deg', '--tilt-y': '0deg' });
+let portraitFrame;
+const resetPortrait = () => {
+  window.cancelAnimationFrame(portraitFrame);
+  portraitTilt.value = { '--tilt-x': '0deg', '--tilt-y': '0deg' };
+};
+const followPortrait = (event) => {
+  if (event.pointerType !== 'mouse' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const target = event.currentTarget;
+  const { clientX, clientY } = event;
+  window.cancelAnimationFrame(portraitFrame);
+  portraitFrame = window.requestAnimationFrame(() => {
+    const box = target.getBoundingClientRect();
+    portraitTilt.value = {
+      '--tilt-x': ((clientY - box.top) / box.height - 0.5) * -8 + 'deg',
+      '--tilt-y': ((clientX - box.left) / box.width - 0.5) * 8 + 'deg',
+    };
+  });
+};
+
+const roles = [
+  { label: 'Frontend', description: 'Frontend developer building responsive interfaces with Vue, Nuxt, and React.' },
+  { label: 'Full-stack', description: 'From product planning and design to frontend, backend, and deployment. I build the whole thing.' },
+  { label: 'ERP', description: 'At Toyo, I build custom mcframe modules and supporting systems for manufacturing teams.' },
+];
+const activeRole = ref(0);
+const greetings = ['Halo!', 'Hello!', 'Hola!', 'Bonjour!', 'Ciao!', 'Hallo!', 'こんにちは!'];
+const greetingIndex = ref(0);
+const greetingPaused = ref(false);
+let greetingTimer;
+onMounted(() => {
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  greetingTimer = window.setInterval(() => {
+    if (!greetingPaused.value && !motionPreference.matches && !document.hidden) {
+      greetingIndex.value = (greetingIndex.value + 1) % greetings.length;
+    }
+  }, 2400);
+});
+onBeforeUnmount(() => {
+  window.clearInterval(greetingTimer);
+  window.cancelAnimationFrame(portraitFrame);
+});
 </script>
 
 <template>
   <section id="home" class="hero shell" aria-labelledby="hero-title">
-    <div class="hero-greeting"><span class="hello-mark">Halo!</span> Hello from Tangerang Selatan.</div>
-    <h1 id="hero-title">Hi, I’m <span translate="no">Gilbert.</span></h1>
-    <div class="hero-tabs" role="group" aria-label="Explore the work I do">
-      <button v-for="(item, index) in modes" :key="item.id" :aria-pressed="activeMode === index" :data-mode="item.id" @click="activeMode = index; previewFailed = false">{{ item.label }}</button>
-    </div>
-    <p class="hero-summary">Frontend developer. Full-stack builder.<br />I turn ideas into websites people can use.</p>
-    <div class="hero-actions">
-      <a class="action" href="#projects">Come see what I build <span aria-hidden="true">↗</span></a>
-      <a class="hero-contact" href="#contact">Let’s talk</a>
-    </div>
-
-    <div class="workbench">
-      <div class="portrait-note">
-        <div class="portrait-stage"><img :src="portrait" alt="Valentinus Gilbert Sanjaya" width="1396" height="1450" fetchpriority="high" /></div>
-        <p>One person.<br /><strong>Quite a few hats.</strong></p>
-        <a :href="social.linkedin" target="_blank" rel="noopener noreferrer">Currently at Toyo ↗</a>
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <button class="hero-greeting" type="button" :aria-pressed="greetingPaused" :aria-label="greetings[greetingIndex] + (greetingPaused ? ' Resume rotating greeting' : ' Pause rotating greeting')" :title="greetingPaused ? 'Resume greeting' : 'Pause greeting'" @click="greetingPaused = !greetingPaused"><span aria-hidden="true">{{ greetings[greetingIndex] }}</span></button>
+        <h1 id="hero-title">I’m <span translate="no">Gilbert.</span></h1>
+        <div class="hero-tabs" role="group" aria-label="Explore what I do"><button v-for="(role, index) in roles" :key="role.label" :data-role="index" :aria-pressed="activeRole === index" @click="activeRole = index">{{ role.label }}</button></div>
+        <p class="hero-summary" aria-live="polite">{{ roles[activeRole].description }}</p>
+        <div class="hero-actions">
+          <a class="action" href="#projects">Explore my projects <span aria-hidden="true">↗</span></a>
+          <a class="hero-contact" href="#contact">Let’s talk</a>
+        </div>
+        <a class="hero-status" :href="social.linkedin" target="_blank" rel="noopener noreferrer">Currently building ERP solutions at Toyo <span aria-hidden="true">↗</span></a>
       </div>
-      <div class="preview-stage" :style="{ '--stage': mode.color }">
-        <Transition name="preview-swap" mode="out-in">
-          <div :key="mode.id" class="preview-content">
-            <template v-if="mode.project">
-              <a class="hero-browser" :href="'#' + mode.project.id" :aria-label="'Explore ' + mode.project.title">
-                <div class="browser-toolbar"><span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span><span translate="no">{{ mode.project.domain }}</span><span aria-hidden="true">↗</span></div>
-                <img v-if="!previewFailed" :src="mode.project.image" :alt="mode.project.title + ' website preview'" width="1440" height="1050" @error="previewFailed = true" />
-                <p v-else class="hero-preview-fallback">{{ mode.project.title }}<br />Explore the project below.</p>
-              </a>
-            </template>
-            <div v-else class="erp-preview">
-              <span class="erp-name" translate="no">mcframe<span> / </span>ERP</span>
-              <p>Built around<br /><strong>the way you work.</strong></p>
-              <div class="erp-capabilities"><span>Business requirements</span><span>Custom modules</span><span>Full-stack subsystems</span></div>
-              <a href="#experience" class="text-link">My work at Toyo <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </Transition>
-        <div class="mode-description" aria-live="polite"><h2>{{ mode.title }}</h2><p>{{ mode.description }}</p></div>
-      </div>
+      <nav class="hero-socials" aria-label="Profile links and CV">
+        <a v-for="link in profileLinks" :key="link.label" :href="link.href" :download="link.download" :target="link.download ? undefined : '_blank'" :rel="link.download ? undefined : 'noopener noreferrer'">
+          <svg :viewBox="'0 0 ' + link.icon.icon[0] + ' ' + link.icon.icon[1]" aria-hidden="true" focusable="false"><path :d="link.icon.icon[4]" /></svg>
+          {{ link.label }}
+        </a>
+      </nav>
+      <figure class="hero-portrait">
+        <div class="portrait-interaction" @pointermove="followPortrait" @pointerleave="resetPortrait" @pointercancel="resetPortrait">
+          <div class="portrait-stage" :style="portraitTilt"><img :src="portrait" alt="Valentinus Gilbert Sanjaya" width="1396" height="1450" fetchpriority="high" /></div>
+        </div>
+        <figcaption>Design. Code. Deploy.</figcaption>
+      </figure>
     </div>
     <WalkingPets />
   </section>
 </template>
 
 <style scoped lang="scss">
-.hero { padding-block: 40px 28px; }
-.hero-greeting { display: flex; justify-content: center; align-items: center; gap: 10px; font-size: 15px; color: var(--muted); }
-.hello-mark { font-family: var(--display); font-size: 24px; font-weight: 700; line-height: 1; color: var(--accent); transform: rotate(-8deg); }
-h1 { text-align: center; font-size: clamp(58px, 8.2vw, 118px); font-weight: 650; letter-spacing: -0.035em; margin-block: 18px 24px; animation: name-arrive 800ms var(--ease) both; }
-h1 > span { color: var(--accent); }
-.hero-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
-.hero-tabs button { border: 0; border-radius: 999px; min-height: 44px; padding: 9px 22px; background: var(--surface); font-weight: 600; transition: background-color 180ms, color 180ms, transform 180ms; }
-.hero-tabs button:hover { background: #e8eaff; transform: translateY(-2px); }
+.hero { padding-block: 64px 28px; }
+.hero-layout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr); grid-template-areas: 'copy portrait' 'socials portrait'; gap: 20px 64px; align-items: center; }
+.hero-copy { grid-area: copy; }
+.hero-socials { grid-area: socials; display: flex; flex-wrap: wrap; gap: 8px; }
+.hero-socials a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 16px; border-radius: 999px; background: var(--surface); font-size: 14px; font-weight: 500; text-decoration: none; transition: transform 180ms, background-color 180ms, color 180ms; }
+.hero-socials a:hover { background: var(--accent); color: #fff; transform: translateY(-3px); }
+.hero-socials svg { width: 16px; height: 16px; fill: currentColor; }
+.hero-greeting { display: flex; align-items: center; min-height: 44px; border: 0; padding: 0 4px; background: transparent; color: var(--muted); font-size: 16px; }
+.hero-greeting > span { font-family: var(--display); font-size: 26px; font-weight: 700; color: var(--accent); transform: rotate(-8deg); }
+h1 { font-size: clamp(72px, 8vw, 116px); font-weight: 650; line-height: 0.98; letter-spacing: -0.035em; margin-block: 24px; animation: name-arrive 800ms var(--ease) both; }
+h1 > span { display: block; color: var(--accent); }
+.hero-summary { font-size: 20px; color: var(--muted); max-width: 530px; }
+.hero-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.hero-tabs button { min-height: 44px; border: 0; border-radius: 999px; padding: 9px 20px; background: var(--surface); font-size: 14px; font-weight: 600; transition: background-color 180ms, color 180ms; }
+.hero-tabs button:hover { background: #e7eaff; }
 .hero-tabs button[aria-pressed="true"] { background: var(--accent); color: #fff; }
-.hero-summary { margin-top: 20px; text-align: center; font-size: 18px; color: var(--muted); }
-.hero-actions { display: flex; justify-content: center; align-items: center; gap: 28px; margin-top: 24px; }
+.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 28px; margin-top: 28px; }
 .hero-contact { min-height: 44px; display: inline-flex; align-items: center; font-weight: 600; }
-.workbench { display: grid; grid-template-columns: 240px minmax(0, 1fr); align-items: center; gap: 56px; max-width: 1010px; margin: 36px auto 0; animation: workbench-arrive 900ms var(--ease) both; }
-.portrait-note { transform: rotate(-5deg); text-align: center; transition: transform 350ms var(--ease); }
-.portrait-note:hover { transform: rotate(0); }
-.portrait-stage { border-radius: 110px 110px 48px 48px; overflow: hidden; background: #ffedcb; padding: 20px 4px 0; }
-.portrait-stage img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: top; }
-.portrait-note p { margin-top: 14px; font-family: var(--display); font-size: 24px; line-height: 1.15; letter-spacing: -0.03em; }
-.portrait-note > a { display: inline-flex; min-height: 44px; align-items: center; font-size: 13px; color: var(--muted); }
-.preview-stage { background: var(--stage); border-radius: 28px; padding: 24px; min-width: 0; }
-.preview-content { min-height: 268px; }
-.hero-browser { display: block; border-radius: 12px; overflow: hidden; background: #fff; text-decoration: none; transform: rotate(2deg); transition: transform 400ms var(--ease); }
-.hero-browser:hover { transform: rotate(0) translateY(-4px); }
-.browser-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 14px; font-size: 13px; color: var(--muted); }
-.browser-dots { display: inline-flex; gap: 5px; }
-.browser-dots i { width: 7px; height: 7px; border-radius: 50%; background: #d0d2dc; }
-.hero-browser img { width: 100%; aspect-ratio: 2.4; object-fit: cover; object-position: top; }
-.mode-description { margin-top: 24px; }
-.mode-description h2 { font-size: 22px; letter-spacing: -0.035em; }
-.mode-description p { margin-top: 8px; font-size: 14px; color: var(--muted); }
-.erp-preview { display: flex; flex-direction: column; justify-content: space-between; gap: 16px; min-height: 268px; background: #fffdf6; padding: 24px; border-radius: 14px; }
-.erp-name { font-size: 14px; font-weight: 700; }
-.erp-name > span { color: #8a702d; }
-.erp-preview > p { font-family: var(--display); font-size: clamp(28px, 3vw, 44px); line-height: 1.1; letter-spacing: -0.045em; }
-.erp-capabilities { display: flex; flex-wrap: wrap; gap: 8px; }
-.erp-capabilities > span { padding: 5px 10px; border-radius: 6px; background: #f5ecd4; font-size: 13px; }
-.erp-preview .text-link { font-size: 14px; }
-.hero-preview-fallback { min-height: 230px; display: grid; align-content: center; padding: 24px; }
-.preview-swap-enter-active, .preview-swap-leave-active { transition: opacity 170ms, transform 220ms var(--ease); }
-.preview-swap-enter-from { opacity: 0; transform: translateY(8px); }
-.preview-swap-leave-to { opacity: 0; transform: translateY(-8px); }
+.hero-status { display: inline-flex; align-items: center; min-height: 44px; gap: 8px; margin-top: 20px; font-size: 14px; color: var(--muted); text-decoration: none; }
+.hero-status:hover { color: var(--accent); text-decoration: underline; }
+.hero-portrait { grid-area: portrait; margin: 0; min-width: 0; transform: rotate(3deg); transition: transform 450ms var(--ease); animation: portrait-arrive 900ms var(--ease) both; }
+.hero-portrait:hover { transform: rotate(0) translateY(-4px); }
+.portrait-stage { padding: 24px 12px 0; border-radius: 48% 48% 28% 28%; overflow: hidden; background: #ffedcb; transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)); transition: transform 180ms ease-out; }
+.portrait-stage img { width: 100%; aspect-ratio: 0.95; object-fit: cover; object-position: top; }
+figcaption { margin-top: 18px; text-align: center; font-size: 13px; color: var(--muted); }
 @keyframes name-arrive { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes workbench-arrive { from { opacity: 0; transform: translateY(16px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
-@media (max-width: 900px) {
-  .workbench { grid-template-columns: 170px minmax(0, 1fr); gap: 28px; }
-  .preview-content { min-height: 220px; }
-  .portrait-note p { font-size: 20px; }
+@keyframes portrait-arrive { from { opacity: 0; translate: 0 16px; } to { opacity: 1; translate: 0 0; } }
+@media (max-width: 950px) {
+  .hero-layout { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 32px; }
+  .hero-summary { font-size: 18px; }
 }
 @media (max-width: 650px) {
-  .hero { padding-top: 40px; }
-  .hero-greeting { font-size: 13px; }
-  .hello-mark { font-size: 24px; }
-  h1 { font-size: clamp(54px, 11.5vw, 75px); }
-  .hero-tabs { gap: 6px; }
-  .hero-tabs button { padding-inline: 17px; font-size: 14px; }
-  .hero-summary { font-size: 16px; }
-  .hero-actions { gap: 16px; flex-wrap: wrap; }
+  .hero { padding-top: 36px; }
+  .hero-layout { grid-template-columns: minmax(0, 1fr) 120px; grid-template-areas: 'greeting portrait' 'title portrait' 'roles roles' 'summary summary' 'actions actions' 'status status' 'socials socials'; gap: 0 16px; }
+  .hero-copy { display: contents; }
+  .hero-greeting { grid-area: greeting; align-self: end; flex-wrap: wrap; gap: 4px 8px; font-size: 13px; }
+  .hero-greeting > span { font-size: 22px; }
+  h1 { grid-area: title; font-size: clamp(48px, 11vw, 70px); margin-block: 16px 20px; }
+  .hero-summary { grid-area: summary; font-size: 18px; margin-top: 16px; }
+  .hero-tabs { grid-area: roles; margin-top: 8px; margin-bottom: 0; }
+  .hero-tabs button { padding-inline: 17px; }
+  .hero-actions { grid-area: actions; margin-top: 24px; gap: 24px; }
   .hero-actions .action { font-size: 14px; padding-inline: 20px; }
-  .workbench { display: flex; flex-direction: column; gap: 28px; margin-top: 36px; }
-  .portrait-note { display: grid; grid-template-columns: 76px 1fr; column-gap: 16px; text-align: left; transform: rotate(-3deg); align-items: center; max-width: 280px; }
-  .portrait-stage { grid-row: span 2; border-radius: 50%; padding: 6px 0 0; }
-  .portrait-note p { margin-top: 0; font-size: 20px; }
-  .portrait-note > a { min-height: 32px; }
-  .preview-stage { width: 100%; padding: 16px; border-radius: 20px; }
-  .preview-content { min-height: 168px; }
-  .browser-toolbar { gap: 8px; padding: 8px 10px; font-size: 13px; }
-  .browser-dots { gap: 3px; }
-  .browser-dots i { width: 5px; height: 5px; }
-  .hero-browser { transform: rotate(1deg); }
-  .mode-description h2 { font-size: 20px; }
-  .mode-description p { font-size: 14px; }
-  .erp-preview { min-height: 220px; padding: 16px; }
+  .hero-status { grid-area: status; margin-top: 12px; font-size: 13px; }
+  .hero-socials { margin-top: 12px; }
+  .hero-socials a { padding-inline: 10px; gap: 6px; font-size: 13px; }
+  .hero-portrait { grid-area: portrait; width: 100%; }
+  .portrait-stage { padding: 10px 2px 0; }
+  figcaption { display: none; }
+}
+@media (max-width: 360px) {
+  .hero-layout { grid-template-columns: minmax(0, 1fr) 96px; gap: 0 12px; }
+  h1 { font-size: 46px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portrait-stage, .hero-portrait, .hero-portrait:hover { transform: none; }
 }
 </style>
