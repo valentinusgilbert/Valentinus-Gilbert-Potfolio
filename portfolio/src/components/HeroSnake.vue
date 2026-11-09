@@ -4,13 +4,13 @@ import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
 const root = ref(null);
 const route = ref(null);
 const apple = ref(null);
-const segmentCount = ref(3);
+const segmentCount = ref(4);
 const path = ref('');
 const segments = [];
 
 let routeLength = 0;
 let head = 0;
-let body = 3;
+let body = 4;
 let maxBody = 8;
 let spacing = 10;
 let speed = 0.05;
@@ -57,7 +57,7 @@ const spawnApple = () => {
 const eat = (time) => {
   appleDistance = null;
   respawnAt = time + 450;
-  body = body >= maxBody ? 3 : body + 1;
+  body = body >= maxBody ? 4 : body + 1;
   segmentCount.value = body;
 };
 
@@ -184,12 +184,19 @@ const measure = async () => {
   const right = (best.x + best.width) * cell - inset;
   const top = best.y * cell + inset;
   const bottom = (best.y + best.height) * cell - inset;
-  path.value = `M ${left} ${top} L ${right} ${top} L ${right} ${bottom} L ${left} ${bottom} Z`;
+  const radius = Math.min(24, (right - left) / 3, (bottom - top) / 3);
+  path.value = [
+    `M ${left + radius} ${top}`,
+    `L ${right - radius} ${top}`, `Q ${right} ${top} ${right} ${top + radius}`,
+    `L ${right} ${bottom - radius}`, `Q ${right} ${bottom} ${right - radius} ${bottom}`,
+    `L ${left + radius} ${bottom}`, `Q ${left} ${bottom} ${left} ${bottom - radius}`,
+    `L ${left} ${top + radius}`, `Q ${left} ${top} ${left + radius} ${top}`, 'Z',
+  ].join(' ');
   await nextTick();
   if (!route.value || token !== measureToken) return;
   routeLength = route.value.getTotalLength();
   maxBody = Math.max(4, Math.min(mobile ? 12 : 22, Math.floor(routeLength / spacing * 0.5)));
-  body = Math.min(3, maxBody);
+  body = 4;
   head = 0;
   appleDistance = null;
   respawnAt = 0;
@@ -247,7 +254,7 @@ onBeforeUnmount(() => {
 .snake-route { position: absolute; inset: 0; overflow: visible; }
 .snake-segment { position: absolute; top: 0; left: 0; width: var(--segment); height: var(--segment); border-radius: 32%; background: #4e9f63; }
 .snake-segment:nth-child(3n) { background: #5cad71; }
-.snake-head { display: flex; align-items: center; justify-content: center; gap: 18%; border-radius: 50%; background: #3c8553; }
+.snake-segment.snake-head { display: flex; align-items: center; justify-content: center; gap: 18%; border-radius: 50%; background: #3c8553; }
 .snake-head i { width: 18%; height: 18%; border-radius: 50%; background: #f4f7ef; }
 .snake-apple { position: absolute; top: 0; left: 0; width: calc(var(--segment) * 1.4); height: calc(var(--segment) * 1.4); opacity: 0; transition: opacity 200ms; }
 .snake-apple::before { content: ''; position: absolute; inset: 18% 8% 6%; border-radius: 48% 48% 50% 50%; background: #dc5a3c; }
