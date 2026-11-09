@@ -32,7 +32,7 @@ const sendMessage = (event) => {
   <section id="contact" class="contact section-space" aria-labelledby="contact-title">
     <div class="shell contact-layout">
       <div class="contact-copy">
-        <h2 id="contact-title">Got something<br />in mind?</h2>
+        <h2 id="contact-title">Let’s make<br />something click.</h2>
         <p>A website, an app, an ERP challenge, or a team I should meet. Tell me what you’re working on.</p>
         <a class="text-link" :href="social.whatsapp" target="_blank" rel="noopener noreferrer">Say hello on WhatsApp <span aria-hidden="true">↗</span></a>
       </div>
@@ -50,17 +50,17 @@ const sendMessage = (event) => {
 </template>
 
 <style scoped lang="scss">
-.contact { background: #e8ddcf; }
-.contact-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 100px; }
+.contact { background: #fff; }
+.contact-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; padding: 48px; border-radius: 28px; background: #eef0ff; }
 .contact-copy p { max-width: 420px; margin-top: 24px; }
 .contact-copy .text-link { margin-top: 24px; }
 form { display: flex; flex-direction: column; align-items: flex-start; }
 label { font-weight: 600; font-size: 14px; margin-bottom: 8px; }
-input, textarea { width: 100%; min-width: 0; border: 1px solid #8a8173; background: var(--paper); color: var(--ink); border-radius: 0; padding: 12px 16px; margin-bottom: 24px; }
+input, textarea { width: 100%; min-width: 0; border: 1px solid #a4abc5; background: var(--paper); color: var(--ink); border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; }
 input::placeholder, textarea::placeholder { color: var(--muted); }
 textarea { resize: vertical; min-height: 140px; }
 .contact-note { margin-top: 12px; font-size: 13px; color: var(--muted); }
 .contact-feedback { margin-top: 12px; }
-@media (max-width: 900px) { .contact-layout { gap: 48px; } }
-@media (max-width: 650px) { .contact-layout { grid-template-columns: minmax(0, 1fr); gap: 40px; } }
+@media (max-width: 900px) { .contact-layout { gap: 36px; padding: 32px; } }
+@media (max-width: 650px) { .contact-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 24px; border-radius: 20px; } }
 </style>

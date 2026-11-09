@@ -1,5 +1,7 @@
 # Portfolio verification · 9 November 2026
 
+This records the earlier editorial design. Its visual direction is superseded by [the playful revision](playful-portfolio-verification.md); that report contains the current verification and all-project visibility checks.
+
 The redesign uses the approved warm editorial direction: off-white, dark ink, brick-red actions, personal typography, asymmetric project previews. Frontend development leads the introduction; full-stack ownership and ERP experience follow with concrete examples.
 
 ## Evidence
