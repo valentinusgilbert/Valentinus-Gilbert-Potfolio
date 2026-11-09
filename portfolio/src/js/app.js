@@ -1,105 +1,75 @@
 import Header from '@/components/Header.vue';
 import Banner from '@/components/Banner.vue';
 import About from '@/components/About.vue';
+import Experience from '@/components/Experience.vue';
+import Projects from '@/components/Projects.vue';
 import Contact from '@/components/Contact.vue';
 import Footer from '@/components/Footer.vue';
+import BackgroundFX from '@/components/BackgroundFX.vue';
+import CustomCursor from '@/components/CustomCursor.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
+import {
+    faArrowUp,
+    faArrowPointer,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ref, onMounted, onUnmounted } from 'vue';
-import music from '@/assets/music/music.mp3';
+import {
+    canUseCustomCursor,
+    customCursorEnabled,
+    toggleCustomCursor,
+} from '@/composables/useCustomCursor';
 
-library.add(faPlay, faPause);
+library.add(faArrowUp, faArrowPointer);
 
 export default {
     components: {
         Header,
         Banner,
         About,
+        Experience,
+        Projects,
         Contact,
         Footer,
-        FontAwesomeIcon
+        BackgroundFX,
+        CustomCursor,
+        FontAwesomeIcon,
     },
     setup() {
-        const isPlaying = ref(false);
-        const currentTime = ref('0:00');
-        const duration = ref('0:00');
-        const isEnded = ref(false);
-        const isPaused = ref(false);
-        const audio = new Audio(music);
-        const soundwaveData = ref([]);
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const analyser = audioContext.createAnalyser();
-        const source = audioContext.createMediaElementSource(audio);
-        source.connect(analyser);
-        analyser.connect(audioContext.destination);
+        /* --------------------- scroll progress / to top --------------------- */
+        const scrollProgress = ref(0);
+        const showBackToTop = ref(false);
 
-        const formatTime = (time) => {
-            const minutes = Math.floor(time / 60);
-            const seconds = Math.floor(time % 60).toString().padStart(2, '0');
-            return `${minutes}:${seconds}`;
+        const onScroll = () => {
+            const scrollable =
+                document.documentElement.scrollHeight - window.innerHeight;
+            scrollProgress.value =
+                scrollable > 0 ? Math.min(100, (window.scrollY / scrollable) * 100) : 0;
+            showBackToTop.value = window.scrollY > 600;
         };
 
-        const updateTime = () => {
-            currentTime.value = formatTime(audio.currentTime);
-            duration.value = formatTime(audio.duration);
-            if (audio.ended) {
-                isPlaying.value = false;
-                isEnded.value = true;
-            }
-        };
-
-        const togglePlay = () => {
-            if (audioContext.state === 'suspended') {
-                audioContext.resume();
-            }
-            if (isPlaying.value) {
-                audio.pause();
-                isPlaying.value = false;
-                isPaused.value = true;
-            } else {
-                if (isEnded.value) {
-                    audio.currentTime = 0;
-                    isEnded.value = false;
-                }
-                audio.play();
-                isPlaying.value = true;
-                isPaused.value = false;
-            }
-        };
-
-        const generateSoundwaveData = () => {
-            analyser.fftSize = 256;
-            const bufferLength = analyser.frequencyBinCount;
-            const dataArray = new Uint8Array(bufferLength);
-
-            const draw = () => {
-                analyser.getByteFrequencyData(dataArray);
-                soundwaveData.value = [...dataArray];
-                requestAnimationFrame(draw);
-            };
-            draw();
+        const scrollToTop = () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         };
 
         onMounted(() => {
-            audio.addEventListener('timeupdate', updateTime);
-            audio.addEventListener('loadedmetadata', updateTime);
-            generateSoundwaveData();
+            onScroll();
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', onScroll);
         });
 
         onUnmounted(() => {
-            audio.removeEventListener('timeupdate', updateTime);
-            audio.removeEventListener('loadedmetadata', updateTime);
+            window.removeEventListener('scroll', onScroll);
+            window.removeEventListener('resize', onScroll);
         });
 
         return {
-            isPlaying,
-            currentTime,
-            duration,
-            togglePlay,
-            soundwaveData,
-            isEnded,
-            isPaused
-        }
-    }
-}
+            scrollProgress,
+            showBackToTop,
+            scrollToTop,
+            canUseCustomCursor,
+            customCursorEnabled,
+            toggleCustomCursor,
+        };
+    },
+};

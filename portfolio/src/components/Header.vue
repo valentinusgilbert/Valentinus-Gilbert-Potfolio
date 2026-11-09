@@ -1,128 +1,29 @@
-<template>
-  <header>
-    <!-- New navigation bar -->
+<script setup>
+import resume from '../assets/Resume - Valentinus Gilbert Sanjaya.pdf';
+</script>
 
-    <!-- Existing header title -->
-    <div class="header-title">
-        <div class="header-title__circles">
-        <span></span>
-        <span></span>
-        <span></span>
-        </div>
-        <div class="header-title__title">Personal Portfolio</div>
-        <button class="header-title__button" @click="downloadResume">
-          Resume
-        </button>
-    </div>
-    <nav class="header-navigation">
-        <ul>
-          <li><a href="#" @click.prevent="navigateTo('home')">Home</a></li>
-          <li><a href="#" @click.prevent="navigateTo('about')">About</a></li>
-          <li><a href="#" @click.prevent="navigateTo('project')">Project</a></li>
-          <li><a href="#" @click.prevent="navigateTo('contact')">Contact</a></li>
-        </ul>
-      </nav>
+<template>
+  <header class="site-header shell">
+    <a class="site-name" href="#home" aria-label="Gilbert, back to home" translate="no">gilbert<span>.</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#projects">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="resume-link" :href="resume" download="Valentinus-Gilbert-Sanjaya-Resume.pdf">Resume <span aria-hidden="true">↙</span></a>
   </header>
 </template>
 
-<script src="./js/header.js"></script>
-<style lang="scss" scoped>
-
-header {
-  box-shadow: 0px 3px 4px rgb(255, 255, 255);
-
+<style scoped lang="scss">
+.site-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 24px; }
+.site-name { font-size: 30px; font-weight: 800; letter-spacing: -2px; text-decoration: none; line-height: 1.4; }
+.site-name span { color: var(--accent); }
+nav { display: flex; gap: 32px; }
+nav a, .resume-link { display: inline-flex; align-items: center; gap: 16px; min-height: 44px; text-decoration: none; font-size: 14px; font-weight: 600; }
+nav a:hover, .resume-link:hover { text-decoration: underline; }
+@media (max-width: 600px) {
+  .site-header { flex-wrap: wrap; gap: 8px 16px; padding-block: 16px; }
+  nav { order: 3; width: 100%; justify-content: space-between; gap: 16px; }
+  .site-name { font-size: 26px; }
 }
-
-.header-title {
-  background-color: #324757;
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 16px;
-  &__circles{
-    left: 10px;
-    display: flex;
-    gap: 10px;
-    span {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        @media (max-width: 768px) {
-            width: 8px;
-            height: 8px;
-        }
-        
-    } 
-    :nth-child(1) {
-        background-color: #FE5F58;
-    }
-    :nth-child(2) {
-        background-color: #FDC728;
-    }
-    :nth-child(3) {
-        background-color: #25C43A;
-    }
-  }
-  &__button {
-    position: relative;
-    background-color: #FF715B;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-weight: bolder;
-    cursor: pointer;
-    @media (max-width: 768px) {
-        font-size: 12px;
-        padding: 6px 10px;
-    }
-  }
-  &__button:hover {
-    background-color: #d86554;
-  }
-  &__title {
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    @media (max-width: 768px) {
-        font-size: 14px;
-    }
-  }
-}
-
-.header-navigation {
-    display: flex;
-    justify-content: center;
-    background-color: #556775;
-    padding: 4px 16px;
-    ul {
-      list-style: none;
-      display: flex;
-      gap: 60px;
-      margin: 0;
-      padding: 0;
-      @media (max-width: 768px) {
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      li {
-        a {
-            font-size: 16px;
-            color: white;
-            text-decoration: none;
-            &:hover {
-                text-decoration: underline;
-            }
-            @media (max-width: 768px) {
-                font-size: 14px;
-                font-weight: bold;
-            }
-        }
-      }
-    }
-  }
-
 </style>

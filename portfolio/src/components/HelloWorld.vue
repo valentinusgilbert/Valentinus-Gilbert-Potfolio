@@ -8,13 +8,10 @@
 
 <style lang="scss" scoped>
 .hello-world {
-  font-size: 40px;
-  font-weight: bolder;
-  height: 47px; // Set a fixed height to prevent movement
-  @media (max-width: 768px) {
-    font-size: 20px;
-    height: 24px;
-  }
+  font-size: clamp(20px, 3.6vw, 32px);
+  font-weight: 800;
+  min-height: 1.35em; // fixed height prevents layout shift while typing
+  color: var(--accent-2);
   &__message {
     text-shadow: -3px 2px 2px rgba(0, 0, 0, 0.5);
   }
