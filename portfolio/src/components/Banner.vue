@@ -3,6 +3,7 @@ import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { social } from '../data/profile';
 import WalkingPets from './WalkingPets.vue';
 import HeroChase from './HeroChase.vue';
+import HeroSnake from './HeroSnake.vue';
 import portrait from '../assets/self-photo.png';
 import resume from '../assets/Resume - Valentinus Gilbert Sanjaya.pdf';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
@@ -110,11 +111,12 @@ onBeforeUnmount(() => {
       </figure>
     </div>
     <WalkingPets />
+    <HeroSnake />
   </section>
 </template>
 
 <style scoped lang="scss">
-.hero { padding-block: 64px 28px; }
+.hero { position: relative; isolation: isolate; padding-block: 64px 28px; }
 .hero-layout { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr); grid-template-areas: 'copy portrait' 'socials portrait'; gap: 20px 64px; align-items: center; }
 .hero-copy { grid-area: copy; }
 .hero-socials { grid-area: socials; display: flex; flex-wrap: wrap; gap: 8px; }
