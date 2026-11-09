@@ -1,6 +1,7 @@
 <script setup>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
 import { projects } from '../data/profile';
+import ProjectSelect from './ProjectSelect.vue';
 
 const activeIndex = ref(0);
 const current = computed(() => projects[activeIndex.value]);
@@ -41,10 +42,7 @@ onBeforeUnmount(() => window.removeEventListener('hashchange', syncFromHash));
       </div>
 
       <div class="project-mobile-picker">
-        <label for="project-picker">Choose a project</label>
-        <select id="project-picker" v-model="activeIndex" name="project" @change="selectProject(activeIndex)">
-          <option v-for="(project, index) in projects" :key="project.title" :value="index">{{ project.title.replaceAll('—', '·') }}</option>
-        </select>
+        <ProjectSelect :model-value="activeIndex" :options="projects" @update:model-value="selectProject" />
       </div>
 
       <div class="project-explorer">
@@ -98,14 +96,24 @@ onBeforeUnmount(() => window.removeEventListener('hashchange', syncFromHash));
 .project-index { min-width: 0; }
 .project-index-heading { display: flex; align-items: center; justify-content: space-between; padding: 0 16px 16px; font-weight: 600; }
 .project-index-heading > span { color: var(--muted); font-size: 14px; }
-.project-index-list { position: relative; max-height: 570px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; padding: 6px; }
-.project-index-button { position: relative; display: block; width: 100%; border: 0; border-radius: 12px; background: transparent; text-align: left; padding: 18px 36px 18px 16px; transition: background-color 180ms, color 180ms; }
-.project-index-button + .project-index-button { margin-top: 4px; }
-.project-index-button:hover { background: #e9ebf4; }
-.project-index-button[aria-pressed="true"] { background: #fff; color: var(--accent); }
+.project-index-list { position: relative; max-height: 570px; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; scrollbar-width: thin; scrollbar-color: #6976b0 #e3e6f2; padding: 8px 12px 8px 8px; scroll-padding-block: 8px; }
+.project-index-list::-webkit-scrollbar { width: 10px; }
+.project-index-list::-webkit-scrollbar-track { background: #e3e6f2; border-radius: 999px; }
+.project-index-list::-webkit-scrollbar-thumb { min-height: 48px; background: #6976b0; border: 2px solid #e3e6f2; border-radius: 999px; }
+.project-index-list::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+.project-index-list::-webkit-scrollbar-button { display: none; }
+@supports selector(::-webkit-scrollbar) {
+  .project-index-list { scrollbar-width: auto; scrollbar-color: auto; }
+}
+.project-index-button { position: relative; display: block; width: 100%; min-height: 94px; border: 1px solid #dce0ee; border-radius: 16px; background: #fff; box-shadow: 0 2px 6px #15172206; text-align: left; padding: 18px 48px 18px 16px; transition: background-color 180ms, border-color 180ms, color 180ms; }
+.project-index-button + .project-index-button { margin-top: 12px; }
+.project-index-button:hover { border-color: #abb6eb; background: #f9faff; }
+.project-index-button[aria-pressed="true"] { border-color: var(--accent); background: #eef0ff; color: var(--accent); box-shadow: 0 3px 12px #4053d812; }
+.project-index-button:focus-visible { outline-offset: 2px; }
 .project-index-title { display: block; font-family: var(--display); font-size: 19px; font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; }
 .project-index-type { display: block; color: var(--muted); font-size: 13px; line-height: 1.5; margin-top: 7px; }
-.project-index-arrow { position: absolute; top: 17px; right: 14px; font-size: 20px; }
+.project-index-arrow { position: absolute; top: 16px; right: 12px; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--surface); color: var(--muted); font-size: 18px; transition: background-color 180ms, color 180ms; }
+.project-index-button[aria-pressed="true"] .project-index-arrow { background: var(--accent); color: #fff; }
 .project-index-hint { padding: 16px 16px 0; color: var(--muted); font-size: 13px; }
 .project-stage { min-width: 0; }
 .project { min-width: 0; background: #fff; border-radius: 24px; padding: 18px; scroll-margin-top: 24px; animation: project-arrive 240ms var(--ease) both; }
@@ -150,8 +158,6 @@ a.project-cover:hover .project-open { background: var(--accent); color: #fff; tr
   .project-explorer { display: block; }
   .project-index { display: none; }
   .project-mobile-picker { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
-  .project-mobile-picker label { font-size: 14px; font-weight: 600; }
-  .project-mobile-picker select { width: 100%; min-height: 48px; padding: 10px 14px; border: 1px solid #a4abc5; border-radius: 10px; background: #fff; color: var(--ink); font: inherit; }
   .project { padding: 12px; border-radius: 18px; }
   .project-preview { aspect-ratio: 1.6; }
   .project-body { padding: 20px 4px 8px; }

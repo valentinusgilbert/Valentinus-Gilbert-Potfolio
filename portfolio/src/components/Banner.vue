@@ -2,6 +2,7 @@
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { social } from '../data/profile';
 import WalkingPets from './WalkingPets.vue';
+import HeroChase from './HeroChase.vue';
 import portrait from '../assets/self-photo.png';
 import resume from '../assets/Resume - Valentinus Gilbert Sanjaya.pdf';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
@@ -41,17 +42,41 @@ const activeRole = ref(0);
 const greetings = ['Halo!', 'Hello!', 'Hola!', 'Bonjour!', 'Ciao!', 'Hallo!', 'こんにちは!'];
 const greetingIndex = ref(0);
 const greetingPaused = ref(false);
+const greetingText = ref(greetings[0]);
+let deleting = true;
+let holdTicks = 16;
 let greetingTimer;
+let motionPreference;
+const syncGreetingMotion = () => {
+  if (motionPreference.matches) {
+    greetingText.value = greetings[greetingIndex.value];
+    deleting = true;
+    holdTicks = 16;
+  }
+};
 onMounted(() => {
-  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  motionPreference.addEventListener('change', syncGreetingMotion);
   greetingTimer = window.setInterval(() => {
-    if (!greetingPaused.value && !motionPreference.matches && !document.hidden) {
-      greetingIndex.value = (greetingIndex.value + 1) % greetings.length;
+    if (greetingPaused.value || motionPreference.matches || document.hidden) return;
+    if (holdTicks > 0) { holdTicks--; return; }
+    const letters = Array.from(greetingText.value);
+    if (deleting) {
+      greetingText.value = letters.slice(0, -1).join('');
+      if (!greetingText.value) {
+        greetingIndex.value = (greetingIndex.value + 1) % greetings.length;
+        deleting = false;
+        holdTicks = 2;
+      }
+    } else {
+      greetingText.value = Array.from(greetings[greetingIndex.value]).slice(0, letters.length + 1).join('');
+      if (greetingText.value === greetings[greetingIndex.value]) { deleting = true; holdTicks = 16; }
     }
-  }, 2400);
+  }, 110);
 });
 onBeforeUnmount(() => {
   window.clearInterval(greetingTimer);
+  motionPreference?.removeEventListener('change', syncGreetingMotion);
   window.cancelAnimationFrame(portraitFrame);
 });
 </script>
@@ -60,7 +85,7 @@ onBeforeUnmount(() => {
   <section id="home" class="hero shell" aria-labelledby="hero-title">
     <div class="hero-layout">
       <div class="hero-copy">
-        <button class="hero-greeting" type="button" :aria-pressed="greetingPaused" :aria-label="greetings[greetingIndex] + (greetingPaused ? ' Resume rotating greeting' : ' Pause rotating greeting')" :title="greetingPaused ? 'Resume greeting' : 'Pause greeting'" @click="greetingPaused = !greetingPaused"><span aria-hidden="true">{{ greetings[greetingIndex] }}</span></button>
+        <button class="hero-greeting" type="button" :aria-pressed="greetingPaused" :aria-label="greetingPaused ? 'Resume typing greeting' : 'Pause typing greeting'" :title="greetingPaused ? 'Resume greeting' : 'Pause greeting'" @click="greetingPaused = !greetingPaused"><span class="greeting-text" :class="{ 'is-paused': greetingPaused }" aria-hidden="true">{{ greetingText }}</span></button>
         <h1 id="hero-title">I’m <span translate="no">Gilbert.</span></h1>
         <div class="hero-tabs" role="group" aria-label="Explore what I do"><button v-for="(role, index) in roles" :key="role.label" :data-role="index" :aria-pressed="activeRole === index" @click="activeRole = index">{{ role.label }}</button></div>
         <p class="hero-summary" aria-live="polite">{{ roles[activeRole].description }}</p>
@@ -83,6 +108,7 @@ onBeforeUnmount(() => {
         <figcaption>Design. Code. Deploy.</figcaption>
       </figure>
     </div>
+    <HeroChase />
     <WalkingPets />
   </section>
 </template>
@@ -95,8 +121,11 @@ onBeforeUnmount(() => {
 .hero-socials a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 16px; border-radius: 999px; background: var(--surface); font-size: 14px; font-weight: 500; text-decoration: none; transition: transform 180ms, background-color 180ms, color 180ms; }
 .hero-socials a:hover { background: var(--accent); color: #fff; transform: translateY(-3px); }
 .hero-socials svg { width: 16px; height: 16px; fill: currentColor; }
-.hero-greeting { display: flex; align-items: center; min-height: 44px; border: 0; padding: 0 4px; background: transparent; color: var(--muted); font-size: 16px; }
-.hero-greeting > span { font-family: var(--display); font-size: 26px; font-weight: 700; color: var(--accent); transform: rotate(-8deg); }
+.hero-greeting { display: flex; align-items: center; min-height: 44px; border: 0; padding: 0 4px; background: transparent; color: var(--muted); font-size: 16px; text-align: left; }
+.hero-greeting > span { min-width: 10ch; min-height: 1.4em; font-family: var(--display); font-size: 26px; font-weight: 700; color: var(--accent); }
+.greeting-text::after { content: ''; display: inline-block; width: 2px; height: 0.9em; margin-left: 4px; background: currentColor; vertical-align: -0.04em; animation: greeting-caret 900ms step-end infinite; }
+.greeting-text.is-paused::after { animation-play-state: paused; }
+@keyframes greeting-caret { 50% { opacity: 0; } }
 h1 { font-size: clamp(72px, 8vw, 116px); font-weight: 650; line-height: 0.98; letter-spacing: -0.035em; margin-block: 24px; animation: name-arrive 800ms var(--ease) both; }
 h1 > span { display: block; color: var(--accent); }
 .hero-summary { font-size: 20px; color: var(--muted); max-width: 530px; }
@@ -144,5 +173,6 @@ figcaption { margin-top: 18px; text-align: center; font-size: 13px; color: var(-
 }
 @media (prefers-reduced-motion: reduce) {
   .portrait-stage, .hero-portrait, .hero-portrait:hover { transform: none; }
+  .greeting-text::after { display: none; }
 }
 </style>
