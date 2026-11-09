@@ -84,6 +84,7 @@ onBeforeUnmount(() => {
 <template>
   <section id="home" class="hero shell" aria-labelledby="hero-title">
     <div class="hero-layout">
+      <HeroChase />
       <div class="hero-copy">
         <button class="hero-greeting" type="button" :aria-pressed="greetingPaused" :aria-label="greetingPaused ? 'Resume typing greeting' : 'Pause typing greeting'" :title="greetingPaused ? 'Resume greeting' : 'Pause greeting'" @click="greetingPaused = !greetingPaused"><span class="greeting-text" :class="{ 'is-paused': greetingPaused }" aria-hidden="true">{{ greetingText }}</span></button>
         <h1 id="hero-title">I’m <span translate="no">Gilbert.</span></h1>
@@ -108,14 +109,13 @@ onBeforeUnmount(() => {
         <figcaption>Design. Code. Deploy.</figcaption>
       </figure>
     </div>
-    <HeroChase />
     <WalkingPets />
   </section>
 </template>
 
 <style scoped lang="scss">
 .hero { padding-block: 64px 28px; }
-.hero-layout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr); grid-template-areas: 'copy portrait' 'socials portrait'; gap: 20px 64px; align-items: center; }
+.hero-layout { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr); grid-template-areas: 'copy portrait' 'socials portrait'; gap: 20px 64px; align-items: center; }
 .hero-copy { grid-area: copy; }
 .hero-socials { grid-area: socials; display: flex; flex-wrap: wrap; gap: 8px; }
 .hero-socials a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 16px; border-radius: 999px; background: var(--surface); font-size: 14px; font-weight: 500; text-decoration: none; transition: transform 180ms, background-color 180ms, color 180ms; }
