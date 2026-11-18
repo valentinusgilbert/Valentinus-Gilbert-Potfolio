@@ -31,12 +31,12 @@ const sendMessage = (event) => {
 <template>
   <section id="contact" class="contact section-space" aria-labelledby="contact-title">
     <div class="shell contact-layout">
-      <div class="contact-copy">
+      <div class="contact-copy" v-reveal>
         <h2 id="contact-title">Let’s make<br />something click.</h2>
         <p>A website, an app, an ERP challenge, or a team I should meet. Tell me what you’re working on.</p>
         <a class="text-link" :href="social.whatsapp" target="_blank" rel="noopener noreferrer">Say hello on WhatsApp <span aria-hidden="true">↗</span></a>
       </div>
-      <form @submit.prevent="sendMessage">
+      <form @submit.prevent="sendMessage" v-reveal="90">
         <label for="contact-name">Your name</label>
         <input id="contact-name" v-model="name" name="name" autocomplete="name" placeholder="Your name…" required maxlength="120" @input="feedback = ''; $event.target.setCustomValidity('')" />
         <label for="contact-message">What are you thinking?</label>

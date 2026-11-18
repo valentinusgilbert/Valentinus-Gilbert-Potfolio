@@ -6,12 +6,12 @@ const formatPeriod = (period) => period.replaceAll('—', '–');
 <template>
   <section id="experience" class="experience section-space" aria-labelledby="experience-title">
     <div class="shell">
-      <div class="section-intro">
+      <div class="section-intro" v-reveal>
         <h2 id="experience-title">Where I’ve<br />been building.</h2>
         <p>Frontend at Blibli. HRIS at Pusat Gadai. Manufacturing systems at Toyo. A different kind of learning in every role.</p>
       </div>
       <ol class="jobs">
-        <li v-for="job in experiences" :key="job.company" class="job">
+        <li v-for="(job, index) in experiences" :key="job.company" class="job" v-reveal="index * 70">
           <div class="job-meta"><span>{{ formatPeriod(job.period) }}</span><span v-if="job.current" class="job-current">Currently here</span><span v-else>{{ job.employmentType }}</span></div>
           <p class="job-company" translate="no">{{ job.company }}</p>
           <h3>{{ job.role }}</h3>
@@ -19,7 +19,7 @@ const formatPeriod = (period) => period.replaceAll('—', '–');
           <p class="job-skills">{{ job.skills.join(' · ') }}</p>
         </li>
       </ol>
-      <details class="campus">
+      <details class="campus" v-reveal="210">
         <summary>Before that, a little campus life</summary>
         <ul><li v-for="role in campusRoles" :key="role.role"><strong>{{ role.role }}</strong> · {{ role.company }}<br /><span class="muted">{{ formatPeriod(role.period) }}</span></li></ul>
       </details>

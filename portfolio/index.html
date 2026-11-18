@@ -1,67 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/smile.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#ffffff">
-    <title>Gilbert | Frontend &amp; Full-Stack Developer</title>
-    <meta name="description" content="Valentinus Gilbert Sanjaya designs, builds, and deploys websites and full-stack applications. Explore Juragan Truk, Intra Niaga, Diskonan, Insuren, and mcframe ERP experience.">
-    <meta name="keywords" content="Valentinus Gilbert, Valentinus Gilbert Sanjaya, ERP Consultant, mcframe, Vue.js Developer, Nuxt.js, Full-Stack Developer, Portfolio, Software Engineer, Indonesia">
-    <meta name="author" content="Valentinus Gilbert Sanjaya">
-    <link rel="canonical" href="https://valentinusgilbert.vercel.app/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <title>Valentinus Gilbert Sanjaya | Frontend, Full-Stack &amp; ERP Developer</title>
+    <meta
+      name="description"
+      content="Portfolio of Valentinus Gilbert Sanjaya — a frontend, full-stack, and ERP developer in Indonesia. 13 projects built with Vue, Nuxt, React, Laravel, and mcframe."
+    />
+    <meta
+      name="keywords"
+      content="Valentinus Gilbert Sanjaya, Valentinus Gilbert, Gilbert Sanjaya, ERP Consultant, Frontend Developer, Full-Stack Developer, Vue.js, Nuxt.js, React, Next.js, Laravel, mcframe, portfolio, Indonesia, Juragan Truk, Intra Niaga Mulya, Diskonan, Insuren, Vision CRM, VVIP, Talpapos, Sewas, Git Profile Finder, NOKA, Furnid"
+    />
+    <meta name="author" content="Valentinus Gilbert Sanjaya" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <!-- Search Console: verify the domain property via DNS, then submit /sitemap.xml. -->
+    <link rel="canonical" href="https://valentinusgilbert.social/" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="/smile.png" />
+    <link rel="apple-touch-icon" href="/smile.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,650;12..96,700;12..96,750;12..96,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,650;12..96,700;12..96,750;12..96,800&family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://valentinusgilbert.vercel.app/">
-    <meta property="og:title" content="Gilbert | Frontend &amp; Full-Stack Developer">
-    <meta property="og:description" content="Websites, full-stack applications, and ERP solutions. Planned, designed, developed, and deployed by Valentinus Gilbert Sanjaya.">
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary">
-    <meta property="twitter:url" content="https://valentinusgilbert.vercel.app/">
-    <meta property="twitter:title" content="Gilbert | Frontend &amp; Full-Stack Developer">
-    <meta property="twitter:description" content="Websites, full-stack applications, and ERP solutions. Planned, designed, developed, and deployed by Valentinus Gilbert Sanjaya.">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://valentinusgilbert.social/" />
+    <meta property="og:site_name" content="Valentinus Gilbert Sanjaya" />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      property="og:title"
+      content="Valentinus Gilbert Sanjaya | Frontend, Full-Stack &amp; ERP Developer"
+    />
+    <meta
+      property="og:description"
+      content="Frontend, full-stack, and ERP developer in Indonesia. Explore 13 projects built end to end with Vue, Nuxt, React, Laravel, and mcframe."
+    />
+    <meta property="og:image" content="https://valentinusgilbert.social/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Valentinus Gilbert Sanjaya, frontend and full-stack developer, holding a fish against a beige arch."
+    />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://valentinusgilbert.social/" />
+    <meta
+      name="twitter:title"
+      content="Valentinus Gilbert Sanjaya | Frontend, Full-Stack &amp; ERP Developer"
+    />
+    <meta
+      name="twitter:description"
+      content="Frontend, full-stack, and ERP developer in Indonesia. Explore 13 projects built end to end with Vue, Nuxt, React, Laravel, and mcframe."
+    />
+    <meta name="twitter:image" content="https://valentinusgilbert.social/og-image.png" />
+    <meta
+      name="twitter:image:alt"
+      content="Valentinus Gilbert Sanjaya, frontend and full-stack developer, holding a fish against a beige arch."
+    />
+
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Valentinus Gilbert Sanjaya",
-      "url": "https://valentinusgilbert.vercel.app/",
-      "sameAs": [
-        "https://www.linkedin.com/in/valentinus-gilbert-sanjaya/",
-        "https://github.com/valentinusgilbert",
-        "https://www.valentinusgilbert.me/"
-      ],
-      "jobTitle": "ERP Consultant & Developer",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Tangerang Selatan",
-        "addressRegion": "Banten",
-        "addressCountry": "ID"
-      },
-      "worksFor": {
-        "@type": "Organization",
-        "name": "PT. Toyo Business Engineering Indonesia"
-      },
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "BINUS University"
-      },
-      "knowsAbout": [
-        "Enterprise Resource Planning (ERP)",
-        "mcframe",
-        "Full-Stack Development",
-        "Vue.js",
-        "Nuxt.js",
-        "Next.js",
-        "TypeScript"
-      ]
-    }
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://valentinusgilbert.social/#website",
+            "url": "https://valentinusgilbert.social/",
+            "name": "Valentinus Gilbert Sanjaya",
+            "alternateName": "Gilbert's Portfolio",
+            "description": "Portfolio of Valentinus Gilbert Sanjaya, a frontend, full-stack, and ERP developer in Indonesia.",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://valentinusgilbert.social/#person" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://valentinusgilbert.social/#person",
+            "name": "Valentinus Gilbert Sanjaya",
+            "givenName": "Valentinus Gilbert",
+            "familyName": "Sanjaya",
+            "alternateName": ["Valentinus Gilbert", "Gilbert Sanjaya", "Gilbert"],
+            "url": "https://valentinusgilbert.social/",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://valentinusgilbert.social/og-image.png",
+              "width": 1200,
+              "height": 630
+            },
+            "jobTitle": ["Frontend & Full-Stack Developer", "ERP Consultant & Developer"],
+            "description": "Valentinus Gilbert Sanjaya is a frontend, full-stack, and ERP developer based in Tangerang Selatan, Indonesia. He builds responsive web applications, enterprise systems, and mcframe ERP solutions.",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "PT. Toyo Business Engineering Indonesia"
+            },
+            "alumniOf": {
+              "@type": "CollegeOrUniversity",
+              "name": "BINUS University"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Tangerang Selatan",
+              "addressRegion": "Banten",
+              "addressCountry": "ID"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/in/valentinus-gilbert-sanjaya/",
+              "https://github.com/valentinusgilbert",
+              "https://www.instagram.com/valentinusgilbert/"
+            ],
+            "knowsAbout": [
+              "Enterprise Resource Planning (ERP)",
+              "mcframe",
+              "Full-Stack Development",
+              "Vue.js",
+              "Nuxt.js",
+              "Next.js",
+              "React",
+              "Laravel",
+              "TypeScript",
+              "Golang",
+              "Tailwind CSS",
+              "MySQL",
+              "PostgreSQL",
+              "Oracle Database",
+              "REST API"
+            ]
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://valentinusgilbert.social/#webpage",
+            "url": "https://valentinusgilbert.social/",
+            "name": "Valentinus Gilbert Sanjaya | Frontend, Full-Stack & ERP Developer",
+            "description": "Portfolio of Valentinus Gilbert Sanjaya — a frontend, full-stack, and ERP developer in Indonesia. 13 projects built with Vue, Nuxt, React, Laravel, and mcframe.",
+            "isPartOf": { "@id": "https://valentinusgilbert.social/#website" },
+            "about": { "@id": "https://valentinusgilbert.social/#person" },
+            "mainEntity": { "@id": "https://valentinusgilbert.social/#person" },
+            "hasPart": { "@id": "https://valentinusgilbert.social/#projects" },
+            "inLanguage": "en",
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://valentinusgilbert.social/og-image.png",
+              "width": 1200,
+              "height": 630
+            }
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://valentinusgilbert.social/#projects",
+            "name": "Projects by Valentinus Gilbert Sanjaya",
+            "numberOfItems": 13,
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@type": "CreativeWork",
+                  "name": "Juragan Truk",
+                  "description": "A working companion for truck owners. Record trips, track income and expenses, and keep driver payroll and trip allowances in one place.",
+                  "url": "https://juragantruk.com",
+                  "creator": { "@id": "https://valentinusgilbert.social/#person" },
+                  "keywords": ["Truck business operations", "Trip records", "Driver payroll"]
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@type": "CreativeWork",
+                  "name": "Intra Niaga Mulya",
+                  "description": "A company website introducing PT Intra Niaga Mulya and its Lampung Robusta coffee to international buyers, with the story behind the coffee and a way to get in touch.",
+                  "url": "https://intraniaga.com",
+                  "creator": { "@id": "https://valentinusgilbert.social/#person" },
+                  "keywords": ["Coffee exporter", "Company profile", "Lampung Robusta"]
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                  "@type": "CreativeWork",
+                  "name": "Diskonan",
+                  "description": "Find discounts from different brands, starting with the biggest savings. A website for browsing brand offers and deciding where to shop next.",
+                  "url": "https://diskonan.online",
+                  "creator": { "@id": "https://valentinusgilbert.social/#person" },
+                  "keywords": ["Brand discovery", "Discount browsing"]
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "item": {
+                  "@type": "CreativeWork",
+                  "name": "Insuren",
+                  "description": "An insurance platform bringing AI chat and an insurance agent marketplace into one experience, giving people a place to ask questions and discover agents.",
+                  "url": "https://insuren.id",
+                  "creator": { "@id": "https://valentinusgilbert.social/#person" },
+                  "keywords": ["AI chat", "Insurance agent marketplace"]
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 5,
+                "item": {
+                  "@type": "CreativeWork",
+                  "name": "Vision CRM Web App",
+                  "description": "Customer Relationship Management platform for an insurance agency, built with Next.js.",
+                  "url": "https://visionvip.id",
+                  "dateCreated": "2025",
+                  "creator": { "@id": "https://valentinusgilbert.social/#person" },
+                  "keywords": ["Next.js", "React", "Tailwind CSS"]
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 6,
+                "item": {
+                  "@type": "CreativeWork",
+                  "name": "VVIP.CO.ID",
+                  "description": "Link-in-bio website with a generative profile-page template for insurance agents.",
+                  "url": "https://vvip.co.id/vagilsan",
+                  "dateCreated": "2025",
+                  "creator": { "@id": "https://valentinusgilbert.social/#person" },
+                  "keywords": ["Next.js", "Tailwind CSS", "SSR"]
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 7,
+                "item": {
+                  "@type": "CreativeWork",
+                  "name": "Blibli — Financial Service",
+                  "description": "Front-end development and maintenance of the Blibli financial service product during an internship.",
+                  "url": "https://www.blibli.com/keuangan",
+                  "dateCreated": "2024",
+                  "creator": { "@id": "https://valentinusgilbert.social/#person" },
+                  "keywords": ["Vue.js", "SCSS", "Integration Test"]
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 8,
+                "item": {
+                  "@type": "CreativeWork",
+                  "name": "Bicooks — Mobile App",
+                  "description": "Cooking companion app built with the Expo framework on top of React Native.",
+                  "dateCreated": "2024",
+                  "creator": { "@id": "https://valentinusgilbert.social/#person" },
+                  "keywords": ["React Native", "Expo"]
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 9,
+                "item": {
+                  "@type": "CreativeWork",
+                  "name": "Talpapos — POS Web App",
+                  "description": "Point of Sale web application for small businesses, built with Laravel and MySQL.",
+                  "url": "https://sinaraneka.com",
+                  "dateCreated": "2023",
+                  "creator": { "@id": "https://valentinusgilbert.social/#person" },
+                  "keywords": ["Laravel", "MySQL", "Blade"]
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 10,
+                "item": {
+                  "@type": "CreativeWork",
+                  "name": "Sewas — Rent Marketplace",
+                  "description": "Marketplace for renting goods between users, built with Laravel and MySQL.",
+                  "dateCreated": "2023",
+                  "creator": { "@id": "https://valentinusgilbert.social/#person" },
+                  "keywords": ["Laravel", "MySQL"]
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 11,
+                "item": {
+                  "@type": "CreativeWork",
+                  "name": "Git Profile Finder",
+                  "description": "Search any GitHub username and browse the profile details and repositories.",
+                  "url": "https://git-profile-finder-valentinus.vercel.app/",
+                  "dateCreated": "2023",
+                  "creator": { "@id": "https://valentinusgilbert.social/#person" },
+                  "keywords": ["Vue.js", "REST API"]
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 12,
+                "item": {
+                  "@type": "CreativeWork",
+                  "name": "NOKA",
+                  "description": "Game website project built as part of a college assignment.",
+                  "url": "https://noka-3-valentinus-gilbert.netlify.app/",
+                  "dateCreated": "2022",
+                  "creator": { "@id": "https://valentinusgilbert.social/#person" },
+                  "keywords": ["JavaScript", "HTML", "CSS"]
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 13,
+                "item": {
+                  "@type": "CreativeWork",
+                  "name": "Furnid",
+                  "description": "Furniture shop website built as a college project.",
+                  "url": "https://furnid-valentinusgilbert.netlify.app/",
+                  "dateCreated": "2022",
+                  "creator": { "@id": "https://valentinusgilbert.social/#person" },
+                  "keywords": ["JavaScript", "HTML", "CSS"]
+                }
+              }
+            ]
+          }
+        ]
+      }
     </script>
   </head>
   <body>

@@ -25,7 +25,7 @@ export const identity = {
   tagline: "Bachelor's Degree in Computer Science — BINUS University",
   location: 'Tangerang Selatan, Banten, Indonesia',
   currentCompany: 'PT. Toyo Business Engineering Indonesia',
-  website: 'https://www.valentinusgilbert.me/',
+  website: 'https://valentinusgilbert.social/',
   availability: 'Open to opportunities',
   /** Rotating roles used by the banner type-writer. */
   roles: [
@@ -64,6 +64,7 @@ export const skillGroups = [
       'Business Process Analysis',
       'Requirement Gathering',
       'HRIS',
+      'ERP Implementation & Support',
     ],
   },
   {
@@ -78,13 +79,33 @@ export const skillGroups = [
       'TypeScript',
       'JavaScript',
       'Tailwind CSS',
+      'SCSS / Sass',
+      'SSR',
+      'Expo',
       'HTML / CSS',
+      'Responsive UI',
     ],
   },
   {
     label: 'Backend & Data',
     icon: '⚙️',
-    items: ['Node.js', 'Laravel', 'MySQL', 'REST API', 'Full-Stack Development'],
+    items: [
+      'Node.js',
+      'Golang',
+      'Laravel',
+      'Laravel Blade',
+      'REST API',
+      'Full-Stack Development',
+    ],
+  },
+  {
+    label: 'Database',
+    icon: '🗄️',
+    items: [
+      'MySQL',
+      'PostgreSQL',
+      'Oracle',
+    ],
   },
   {
     label: 'Tools & Practices',
@@ -95,7 +116,12 @@ export const skillGroups = [
       'Jira',
       'Agile / Scrum',
       'Integration Testing',
-      'Cloud Deployment',
+      'Ubuntu VPS Deployment',
+      'Windows RDP / IIS',
+      'Virtuozzo Cloud',
+      'Deployment Pipelines',
+      'Vercel / Netlify',
+      'SEO & Performance',
     ],
   },
 ];
@@ -125,7 +151,7 @@ export const experiences = [
     highlights: [
       'Built the frontend for an internal HRIS using Nuxt.js.',
       'Developed payroll and employee administration interfaces.',
-      'Built an online recruitment and testing platform.',
+      'Built a pre-employment assessment platform (online IQ/EQ test).',
       'Worked with backend developers and HR teams on API integration.',
     ],
     skills: ['Vue.js', 'Nuxt.js', 'TypeScript', 'HRIS'],
@@ -146,15 +172,15 @@ export const experiences = [
   },
   {
     role: 'Freelance Web Developer',
-    company: 'Ditto Dev',
+    company: 'Independent',
     employmentType: 'Freelance',
     period: 'Sep 2023 — Present',
     location: 'Remote',
     current: true,
     highlights: [
-      'Build custom web applications end-to-end for clients across insurance, retail, and rental businesses.',
+      'Deliver freelance products including Insuren, Vision CRM, Intra Niaga Mulya, Diskonan, and Juragan Truk.',
       'Translate design files into modern, accessible, and responsive user interfaces.',
-      'Optimize website performance, SEO, and deployment pipelines.',
+      'Optimize performance and SEO; deploy to Vercel, Netlify, Ubuntu VPS, Windows RDP/IIS, and Virtuozzo Cloud.',
     ],
     skills: ['Next.js', 'Laravel', 'Tailwind CSS', 'MySQL'],
   },

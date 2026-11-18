@@ -36,16 +36,16 @@ onBeforeUnmount(() => window.removeEventListener('hashchange', syncFromHash));
 <template>
   <section id="projects" class="work section-space" aria-labelledby="work-title">
     <div class="shell">
-      <div class="section-intro">
-        <div><h2 id="work-title">The things I build.</h2><p class="work-count">{{ projects.length }} public projects, from experiments to everyday tools.</p><p class="work-private"><span>Internal</span> Some company work stays private — voucher email delivery, a factory handy-terminal app, HRIS, and online recruitment testing.</p></div>
+      <div class="section-intro" v-reveal>
+        <div><h2 id="work-title">The things I build.</h2><p class="work-count">{{ projects.length }} public projects, from experiments to everyday tools.</p><p class="work-private"><span>Internal</span> Some company work stays private — voucher email delivery, a factory handy-terminal app, HRIS, and a pre-employment assessment (online IQ/EQ test).</p></div>
         <p>Pick a project. Take a closer look.</p>
       </div>
 
-      <div class="project-mobile-picker">
+      <div class="project-mobile-picker" v-reveal="40">
         <ProjectSelect :model-value="activeIndex" :options="projects" @update:model-value="selectProject" />
       </div>
 
-      <div class="project-explorer">
+      <div class="project-explorer" v-reveal="90">
         <nav class="project-index" aria-label="Choose a project">
           <p class="project-index-heading">Explore the work <span>{{ projects.length }}</span></p>
           <div ref="projectList" class="project-index-list" @keydown.home.prevent="selectProject(0, true)" @keydown.end.prevent="selectProject(projects.length - 1, true)">

@@ -44,6 +44,8 @@ section { scroll-margin-top: 24px; }
 .action { display: inline-flex; justify-content: center; align-items: center; gap: 20px; min-height: 52px; padding: 13px 25px; border: 0; border-radius: 999px; background: var(--ink); color: #fff; text-decoration: none; font-weight: 600; transition: background-color 180ms, transform 180ms; }
 .action:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
 .muted { color: var(--muted); }
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 620ms var(--ease), transform 620ms var(--ease); transition-delay: var(--reveal-delay, 0ms); }
+.reveal.is-revealed { opacity: 1; transform: none; }
 .skip-link { position: fixed; top: 12px; left: 20px; z-index: 100; padding: 12px 20px; background: var(--ink); color: #fff; border-radius: 8px; transform: translateY(-180%); }
 .skip-link:focus { transform: translateY(0); color: #fff; }
 summary { min-height: 44px; padding-block: 10px; }

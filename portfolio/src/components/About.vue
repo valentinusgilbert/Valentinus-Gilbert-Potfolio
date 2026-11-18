@@ -8,7 +8,7 @@ const photoFailed = ref(false);
 <template>
   <section id="about" class="about section-space" aria-labelledby="about-title">
     <div class="shell">
-      <div class="about-top">
+      <div class="about-top" v-reveal>
         <figure class="about-photo">
           <img v-if="!photoFailed" :src="photo" :alt="'Photo of ' + identity.name + ' in the mountains'" width="1000" height="911" loading="lazy" @error="photoFailed = true" />
           <div v-else class="photo-unavailable">Gilbert, away from the keyboard.<br />The photo couldn’t load this time.</div>
@@ -23,8 +23,8 @@ const photoFailed = ref(false);
         </div>
       </div>
       <div class="skills">
-        <h3>A few tools<br /> in my corner.</h3>
-        <dl class="skills-list"><div v-for="group in skillGroups" :key="group.label" class="skill-group"><dt>{{ group.label }}</dt><dd>{{ group.items.join(' · ') }}</dd></div></dl>
+        <h3 v-reveal>A few tools<br /> in my corner.</h3>
+        <dl class="skills-list"><div v-for="(group, index) in skillGroups" :key="group.label" class="skill-group" v-reveal="60 + index * 60"><dt>{{ group.label }}</dt><dd>{{ group.items.join(' · ') }}</dd></div></dl>
       </div>
     </div>
   </section>

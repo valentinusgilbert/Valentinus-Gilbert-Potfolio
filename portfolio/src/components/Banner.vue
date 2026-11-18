@@ -105,7 +105,7 @@ onBeforeUnmount(() => {
       </nav>
       <figure class="hero-portrait">
         <div class="portrait-interaction" @pointermove="followPortrait" @pointerleave="resetPortrait" @pointercancel="resetPortrait">
-          <div class="portrait-stage" :style="portraitTilt"><img :src="portrait" alt="Valentinus Gilbert Sanjaya" width="1396" height="1450" fetchpriority="high" /></div>
+          <div class="portrait-stage" :style="portraitTilt"><img :src="portrait" alt="Valentinus Gilbert Sanjaya" width="1000" height="1484" fetchpriority="high" /></div>
         </div>
         <figcaption>Design. Code. Deploy.</figcaption>
       </figure>
@@ -142,7 +142,7 @@ h1 > span { display: block; color: var(--accent); }
 .hero-portrait { grid-area: portrait; margin: 0; min-width: 0; transform: rotate(3deg); transition: transform 450ms var(--ease); animation: portrait-arrive 900ms var(--ease) both; }
 .hero-portrait:hover { transform: rotate(0) translateY(-4px); }
 .portrait-stage { padding: 24px 12px 0; border-radius: 48% 48% 28% 28%; overflow: hidden; background: #ffedcb; transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)); transition: transform 180ms ease-out; }
-.portrait-stage img { width: 100%; aspect-ratio: 0.95; object-fit: cover; object-position: top; }
+.portrait-stage img { width: 100%; aspect-ratio: 0.72; object-fit: cover; object-position: top; }
 figcaption { margin-top: 18px; text-align: center; font-size: 13px; color: var(--muted); }
 @keyframes name-arrive { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes portrait-arrive { from { opacity: 0; translate: 0 16px; } to { opacity: 1; translate: 0 0; } }
@@ -160,6 +160,7 @@ figcaption { margin-top: 18px; text-align: center; font-size: 13px; color: var(-
   .hero-tabs { margin-bottom: 16px; }
   .hero-actions { margin-top: 22px; }
   .hero-status { margin-top: 14px; }
+  .hero-portrait { max-width: 410px; justify-self: end; }
 }
 @media (min-width: 651px) and (max-height: 850px) {
   .hero { padding-top: 32px; }
@@ -168,6 +169,7 @@ figcaption { margin-top: 18px; text-align: center; font-size: 13px; color: var(-
   .hero-tabs { margin-bottom: 14px; }
   .hero-actions { margin-top: 20px; }
   .hero-status { margin-top: 12px; }
+  .hero-portrait { max-width: 360px; }
 }
 @media (max-width: 650px) {
   .hero { padding-top: 36px; }
